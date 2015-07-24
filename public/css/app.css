@@ -178,4 +178,10 @@ input[name="salary"] {
 .active-service {
   background-color: #ddd; }
 
+/* Calendar */
+.myQtip .qtip-content {
+  font-size: 16px; }
+
+/* Calendar  end*/
+
 /*# sourceMappingURL=app.css.map */

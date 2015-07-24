@@ -127,7 +127,7 @@
                                 <img class="img-circle avatar" src={{URL::to('/avatar/'.\Hashids::encode(Auth::user()->id,rand(0,100)))}} width="45" height="45" alt="">
                             </a>
                             <ul class="dropdown-menu dropdown-list" role="menu">
-                                <li role="presentation"><a href="javascript:void(0)l"><i class="fa fa-user"></i>Профил</a></li>
+                                <li role="presentation"><a href="javascript:void(0);"><i class="fa fa-user"></i>Профил</a></li>
                                 <li role="presentation"><a href="javascript:void(0)"><i class="fa fa-calendar"></i>Календар</a></li>
                                 <li role="presentation" class="divider"></li>
                                 <li role="presentation"><a href={{ URL::to('/lock-screen') }}><i class="fa fa-lock"></i>Заключи екран</a></li>
@@ -202,11 +202,9 @@
 @include('partials.js')
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        Globals = {
-            _token : '{{csrf_token()}}'
-        };
-    });
+    Globals = {
+        _token : '{{csrf_token()}}'
+    };
 </script>
 
 @yield('scripts')
