@@ -48,7 +48,7 @@ $('#admincalendar').fullCalendar({
 });
 
 $('#hourElements button[type="submit"]').on('click',function(e){
-    $.post('/test',{_token:Globals._token,id:55}).error(function(er){
+    $.post('/test',{_token:Globals._token,id:1}).error(function(er){
         console.log(er);
     }).success(function(e){
         console.log(e);

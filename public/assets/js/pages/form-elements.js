@@ -12,4 +12,6 @@ $(document).ready(function() {
         format: 'hex'
     });
     $('#cp2').colorpicker();
+    
+    $('#timepicker1').timepicker();
 });

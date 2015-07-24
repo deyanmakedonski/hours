@@ -1,7 +1,7 @@
 (function($) {
 
     $.fn.select = function(options){
-        var data = {id:null,category_id:null,name:null,time:null,price:null};
+        var data = {service_id:null,category_id:null,name:null,time:null,price:null};
         var settings = $.extend({
              name : 'Име',
              dataName: 'service'
@@ -50,7 +50,7 @@
         var serviceclick = function(){
             $('.bodyservice ol li').click(function(){
 
-                data.id = $(this).data('id');
+                data.service_id = $(this).data('service_id');
                 data.category_id = $(this).data('category_id');
                 data.name = $(this).data('name');
                 data.price = $(this).data('price');
@@ -89,7 +89,7 @@
                 if(service.name.toLowerCase().indexOf(value) >= 0 ){
                     bool = true;
                     if($('.bodyservice ol li').length<8){
-                        $('.bodyservice ol').append('<li data-id="'+service.id+'" data-category_id="'+service.category_id+'" data-name="'+service.name+'" data-price="'+service.price+'" data-time="'+service.time+'">'+service.name+'</li>');
+                        $('.bodyservice ol').append('<li data-service_id="'+service.id+'" data-category_id="'+service.category_id+'" data-name="'+service.name+'" data-price="'+service.price+'" data-time="'+service.time+'">'+service.name+'</li>');
                     }
 
                 }
@@ -102,12 +102,11 @@
                 $('.bodyservice').show(0);
             }else{
                 $('.bodyservice ol').append('<li >Няма нищо намерено!</li>');
-                data.id = null;
+                data.service_id = null;
                 data.category_id = null;
                 data.name = null;
                 data.price = null;
                 data.time = null;
-                console.log('Няма нищо намерено');
             }
 
         }
@@ -119,6 +118,8 @@
         mouseleave();
 
 
+
+        $( ".bodyservice ol").append('<option>Потърсете процедура.</option>')
 
         $('body').click(function(e){
             if(e.target.className !== "form-control service-fill")
@@ -137,7 +138,10 @@
             $.get('/calendar/users',{category_id:data.category_id}).error(function(er){
                 console.log(er);
             }).success(function(e){
-                console.log(e);
+                $('.selected-user').html('');
+                e.forEach(function(user){
+                    $('.selected-user').append('<option value="'+user.id+'">'+user.name+'</option');
+                });
             });
         });
 

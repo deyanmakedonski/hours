@@ -1,26 +1,41 @@
-body {
+body, html {
     position: relative;
-    height: 100% !important;
+    height: 100% !important
+}
+
+body, p {
+    font-size: 13px
+}
+
+.f-normal, .f-thin, h1, h2, h3, h4, h5, h6, p {
+    font-weight: 400
+}
+
+.btn, a:active, a:focus, a:hover {
+    outline: 0 !important
+}
+
+.btn-addon i, body, html {
+    position: relative
+}
+
+.messages, .tasks {
+    max-height: 300px
+}
+
+.badge, .btn-addon i, .img-preview, .sidebar-profile span, .task-icon i {
+    text-align: center
+}
+
+body {
     width: 100%;
     font-family: Ubuntu, sans-serif;
-    font-size: 13px;
     background: #ccc;
     color: #4E5E6A
 }
 
-html {
-    height: 100% !important;
-    position: relative
-}
-
-a:active, a:focus, a:hover {
-    outline: 0 !important
-}
-
 p {
     display: block;
-    font-size: 13px;
-    font-weight: 400;
     letter-spacing: normal;
     line-height: 22px;
     margin: 0 0 10px;
@@ -28,8 +43,8 @@ p {
     white-space: normal
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 400
+.f-bold, h3, h4, h5 {
+    font-weight: 600
 }
 
 h1 {
@@ -52,23 +67,7 @@ h5 {
     font-size: 12px
 }
 
-h6 {
-    font-size: 10px
-}
-
-h3, h4, h5 {
-    font-weight: 600
-}
-
-.f-normal, .f-thin {
-    font-weight: 400
-}
-
-.f-bold {
-    font-weight: 600
-}
-
-.f-s-10 {
+.f-s-10, h6 {
     font-size: 10px
 }
 
@@ -293,7 +292,6 @@ h3, h4, h5 {
     border-radius: 12px !important;
     font-weight: 400;
     font-size: 11px !important;
-    text-align: center;
     vertical-align: middle;
     line-height: 11px;
     height: 18px;
@@ -770,6 +768,10 @@ h3, h4, h5 {
     background: 0 0 !important
 }
 
+.btn-danger.active, .btn-danger:active, .btn-default.active, .btn-default:active, .btn-info.active, .btn-info:active, .btn-primary.active, .btn-primary:active, .btn-success.active, .btn-success:active, .btn-warning.active, .btn-warning:active, .open > .dropdown-toggle.btn-danger, .open > .dropdown-toggle.btn-default, .open > .dropdown-toggle.btn-info, .open > .dropdown-toggle.btn-primary, .open > .dropdown-toggle.btn-success, .open > .dropdown-toggle.btn-warning {
+    background-image: none
+}
+
 .bg-primary {
     background-color: #7a6fbe;
     color: #fff
@@ -887,18 +889,15 @@ h3, h4, h5 {
 .btn {
     font-size: 13px;
     border: 1px solid transparent;
-    border-radius: 0;
-    outline: 0 !important
+    border-radius: 0
 }
 
 .btn-addon i {
-    position: relative;
     float: left;
     width: 35px;
     height: 35px;
     margin: -7px 12px -7px -13px;
     line-height: 34px;
-    text-align: center;
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
     background-color: rgba(0, 0, 0, .1)
@@ -940,72 +939,6 @@ h3, h4, h5 {
     font-size: 10px
 }
 
-.btn-default {
-    background-color: #fff;
-    color: #333;
-    border: 1px solid #e5e5e5
-}
-
-.btn-default:active, .btn-default:focus, .btn-default:hover, .btn-group.open .btn-default.dropdown-toggle, .btn.btn-default.active {
-    background-color: #f1f1f1;
-    border: 1px solid #e5e5e5
-}
-
-.btn-primary {
-    background-color: #22BAA0;
-    color: #fff;
-    border: 1px solid transparent
-}
-
-.btn-group.open .btn-primary.dropdown-toggle, .btn-primary:active, .btn-primary:focus, .btn-primary:hover, .btn.btn-primary.active {
-    background-color: #22BAA0;
-    border: 1px solid transparent
-}
-
-.btn-success {
-    background-color: #22BAA0;
-    color: #fff;
-    border: 1px solid transparent
-}
-
-.btn-group.open .btn-success.dropdown-toggle, .btn-success:active, .btn-success:focus, .btn-success:hover, .btn.btn-success.active {
-    background-color: #1DB198;
-    border: 1px solid transparent
-}
-
-.btn-danger {
-    background-color: #f25656;
-    color: #fff;
-    border: 1px solid transparent
-}
-
-.btn-danger:active, .btn-danger:focus, .btn-danger:hover, .btn-group.open .btn-danger.dropdown-toggle, .btn.btn-danger.active {
-    background-color: #e14444;
-    border: 1px solid transparent
-}
-
-.btn-info {
-    background-color: #12AFCB;
-    color: #fff;
-    border: 1px solid transparent
-}
-
-.btn-group.open .btn-info.dropdown-toggle, .btn-info:active, .btn-info:focus, .btn-info:hover, .btn.btn-info.active {
-    background-color: #08A7C3;
-    border: 1px solid transparent
-}
-
-.btn-warning {
-    background-color: #f2ca4c;
-    color: #fff;
-    border: 1px solid transparent
-}
-
-.btn-group.open .btn-warning.dropdown-toggle, .btn-warning:active, .btn-warning:focus, .btn-warning:hover, .btn.btn-warning.active {
-    background-color: #e8bf40;
-    border: 1px solid transparent
-}
-
 .btn-rounded {
     padding-left: 15px;
     padding-right: 15px;
@@ -1014,6 +947,138 @@ h3, h4, h5 {
 
 .btn-group.open .dropdown-toggle {
     box-shadow: none
+}
+
+.btn-default {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #e5e5e5
+}
+
+.btn-default.active, .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default.focus, .btn-default:active, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .btn-default:focus, .btn-default:hover, .open > .dropdown-toggle.btn-default, .open > .dropdown-toggle.btn-default.focus, .open > .dropdown-toggle.btn-default:focus, .open > .dropdown-toggle.btn-default:hover {
+    color: #333;
+    background-color: #f1f1f1;
+    border-color: #e5e5e5
+}
+
+.btn-default.disabled, .btn-default.disabled.active, .btn-default.disabled.focus, .btn-default.disabled:active, .btn-default.disabled:focus, .btn-default.disabled:hover, .btn-default[disabled], .btn-default[disabled].active, .btn-default[disabled].focus, .btn-default[disabled]:active, .btn-default[disabled]:focus, .btn-default[disabled]:hover, fieldset[disabled] .btn-default, fieldset[disabled] .btn-default.active, fieldset[disabled] .btn-default.focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:hover {
+    background-color: #fff;
+    border-color: #ccc
+}
+
+.btn-default .badge {
+    color: #fff;
+    background-color: #333
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #7a6fbe;
+    border-color: transparent
+}
+
+.btn-primary.active, .btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.focus, .btn-primary:active, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:focus, .btn-primary:hover, .open > .dropdown-toggle.btn-primary, .open > .dropdown-toggle.btn-primary.focus, .open > .dropdown-toggle.btn-primary:focus, .open > .dropdown-toggle.btn-primary:hover {
+    color: #fff;
+    background-color: #6a5fac;
+    border-color: transparent
+}
+
+.btn-primary.disabled, .btn-primary.disabled.active, .btn-primary.disabled.focus, .btn-primary.disabled:active, .btn-primary.disabled:focus, .btn-primary.disabled:hover, .btn-primary[disabled], .btn-primary[disabled].active, .btn-primary[disabled].focus, .btn-primary[disabled]:active, .btn-primary[disabled]:focus, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary, fieldset[disabled] .btn-primary.active, fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:active, fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:hover {
+    background-color: #6a5fac;
+    border-color: transparent
+}
+
+.btn-primary .badge {
+    color: #6a5fac;
+    background-color: #fff
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #22BAA0;
+    border-color: transparent
+}
+
+.btn-success.active, .btn-success.active.focus, .btn-success.active:focus, .btn-success.active:hover, .btn-success.focus, .btn-success:active, .btn-success:active.focus, .btn-success:active:focus, .btn-success:active:hover, .btn-success:focus, .btn-success:hover, .open > .dropdown-toggle.btn-success, .open > .dropdown-toggle.btn-success.focus, .open > .dropdown-toggle.btn-success:focus, .open > .dropdown-toggle.btn-success:hover {
+    color: #fff;
+    background-color: #1DB198;
+    border-color: transparent
+}
+
+.btn-success.disabled, .btn-success.disabled.active, .btn-success.disabled.focus, .btn-success.disabled:active, .btn-success.disabled:focus, .btn-success.disabled:hover, .btn-success[disabled], .btn-success[disabled].active, .btn-success[disabled].focus, .btn-success[disabled]:active, .btn-success[disabled]:focus, .btn-success[disabled]:hover, fieldset[disabled] .btn-success, fieldset[disabled] .btn-success.active, fieldset[disabled] .btn-success.focus, fieldset[disabled] .btn-success:active, fieldset[disabled] .btn-success:focus, fieldset[disabled] .btn-success:hover {
+    background-color: #1DB198;
+    border-color: transparent
+}
+
+.btn-success .badge {
+    color: #1DB198;
+    background-color: #fff
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #12AFCB;
+    border-color: transparent
+}
+
+.btn-info.active, .btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover, .btn-info.focus, .btn-info:active, .btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover, .btn-info:focus, .btn-info:hover, .open > .dropdown-toggle.btn-info, .open > .dropdown-toggle.btn-info.focus, .open > .dropdown-toggle.btn-info:focus, .open > .dropdown-toggle.btn-info:hover {
+    color: #fff;
+    background-color: #08A7C3;
+    border-color: transparent
+}
+
+.btn-info.disabled, .btn-info.disabled.active, .btn-info.disabled.focus, .btn-info.disabled:active, .btn-info.disabled:focus, .btn-info.disabled:hover, .btn-info[disabled], .btn-info[disabled].active, .btn-info[disabled].focus, .btn-info[disabled]:active, .btn-info[disabled]:focus, .btn-info[disabled]:hover, fieldset[disabled] .btn-info, fieldset[disabled] .btn-info.active, fieldset[disabled] .btn-info.focus, fieldset[disabled] .btn-info:active, fieldset[disabled] .btn-info:focus, fieldset[disabled] .btn-info:hover {
+    background-color: #08A7C3;
+    border-color: transparent
+}
+
+.btn-info .badge {
+    color: #12AFCB;
+    background-color: #fff
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #f2ca4c;
+    border-color: transparent
+}
+
+.btn-warning.active, .btn-warning.active.focus, .btn-warning.active:focus, .btn-warning.active:hover, .btn-warning.focus, .btn-warning:active, .btn-warning:active.focus, .btn-warning:active:focus, .btn-warning:active:hover, .btn-warning:focus, .btn-warning:hover, .open > .dropdown-toggle.btn-warning, .open > .dropdown-toggle.btn-warning.focus, .open > .dropdown-toggle.btn-warning:focus, .open > .dropdown-toggle.btn-warning:hover {
+    color: #fff;
+    background-color: #e8bf40;
+    border-color: transparent
+}
+
+.btn-warning.disabled, .btn-warning.disabled.active, .btn-warning.disabled.focus, .btn-warning.disabled:active, .btn-warning.disabled:focus, .btn-warning.disabled:hover, .btn-warning[disabled], .btn-warning[disabled].active, .btn-warning[disabled].focus, .btn-warning[disabled]:active, .btn-warning[disabled]:focus, .btn-warning[disabled]:hover, fieldset[disabled] .btn-warning, fieldset[disabled] .btn-warning.active, fieldset[disabled] .btn-warning.focus, fieldset[disabled] .btn-warning:active, fieldset[disabled] .btn-warning:focus, fieldset[disabled] .btn-warning:hover {
+    background-color: #e8bf40;
+    border-color: transparent
+}
+
+.btn-warning .badge {
+    color: #f2ca4c;
+    background-color: #fff
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #f25656;
+    border-color: transparent
+}
+
+.btn-danger.active, .btn-danger.active.focus, .btn-danger.active:focus, .btn-danger.active:hover, .btn-danger.focus, .btn-danger:active, .btn-danger:active.focus, .btn-danger:active:focus, .btn-danger:active:hover, .btn-danger:focus, .btn-danger:hover, .open > .dropdown-toggle.btn-danger, .open > .dropdown-toggle.btn-danger.focus, .open > .dropdown-toggle.btn-danger:focus, .open > .dropdown-toggle.btn-danger:hover {
+    color: #fff;
+    background-color: #e14444;
+    border-color: transparent
+}
+
+.btn-danger.disabled, .btn-danger.disabled.active, .btn-danger.disabled.focus, .btn-danger.disabled:active, .btn-danger.disabled:focus, .btn-danger.disabled:hover, .btn-danger[disabled], .btn-danger[disabled].active, .btn-danger[disabled].focus, .btn-danger[disabled]:active, .btn-danger[disabled]:focus, .btn-danger[disabled]:hover, fieldset[disabled] .btn-danger, fieldset[disabled] .btn-danger.active, fieldset[disabled] .btn-danger.focus, fieldset[disabled] .btn-danger:active, fieldset[disabled] .btn-danger:focus, fieldset[disabled] .btn-danger:hover {
+    background-color: #e14444;
+    border-color: transparent
+}
+
+.btn-danger .badge {
+    color: #f25656;
+    background-color: #fff
 }
 
 .btn-facebook {
@@ -1382,9 +1447,12 @@ h3, h4, h5 {
 
 .panel-transparent {
     background: 0 0;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none
+}
+
+.panel-transparent, .well {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none
 }
 
 .panel-transparent .panel-heading .panel-control a {
@@ -1475,8 +1543,6 @@ h3, h4, h5 {
 
 .well {
     border-radius: 0;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
     box-shadow: none;
     background-color: #F6F6F6;
     border: 0
@@ -1505,7 +1571,7 @@ h3, h4, h5 {
     font-weight: 600
 }
 
-.modal-body {
+.modal-body, .modal-footer {
     position: relative;
     padding: 20px;
     border-bottom-left-radius: 0;
@@ -1513,10 +1579,6 @@ h3, h4, h5 {
 }
 
 .modal-footer {
-    position: relative;
-    padding: 20px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
     border: 0
 }
 
@@ -1626,7 +1688,7 @@ h3, h4, h5 {
     display: none
 }
 
-.pill-content > .active, .tab-content > .active {
+.center, .controls label, .display-block, .pill-content > .active, .tab-content > .active {
     display: block
 }
 
@@ -1707,19 +1769,13 @@ h3, h4, h5 {
 }
 
 .panel-group .panel-heading .panel-title > a {
-    font-size: 14px
-}
-
-.panel-group .panel-heading {
     font-size: 14px;
-    height: auto !important
-}
-
-.panel-group .panel-heading .panel-title > a {
     text-decoration: none
 }
 
 .panel-group .panel-heading {
+    font-size: 14px;
+    height: auto !important;
     border-bottom: 0 !important
 }
 
@@ -1766,10 +1822,6 @@ h3, h4, h5 {
 label {
     font-size: 13px;
     font-weight: 400
-}
-
-.controls label {
-    display: block
 }
 
 .form-control {
@@ -1846,6 +1898,11 @@ input.form-control.input-rounded {
     padding: 7px 12px
 }
 
+.select2-dropdown, .select2-selection {
+    box-shadow: none !important;
+    padding: 6px 10px !important
+}
+
 ol.linenums {
     margin: 0
 }
@@ -1854,9 +1911,7 @@ ol.linenums {
     background: #fff !important;
     border-radius: 0 !important;
     border: 1px solid #dce1e4 !important;
-    box-shadow: none !important;
     font-size: 13px !important;
-    padding: 6px 10px !important;
     height: 34px !important;
     -webkit-transition: all .2s ease-in-out !important;
     -moz-transition: all .2s ease-in-out !important;
@@ -1869,14 +1924,15 @@ ol.linenums {
     border-radius: 0;
     border: 1px solid #dce1e4;
     border-top: 0;
-    box-shadow: none !important;
-    font-size: 13px;
-    padding: 6px 10px !important;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
     z-index: 9999
+}
+
+.bootstrap-tagsinput, .select2-dropdown {
+    font-size: 13px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out
 }
 
 .select2-dropdown.select2-dropdown--above {
@@ -1930,20 +1986,73 @@ ol.linenums {
     border-radius: 0 !important
 }
 
+.bootstrap-tagsinput {
+    background: #fff;
+    border-radius: 0;
+    border: 1px solid #dce1e4;
+    box-shadow: none !important;
+    padding: 6px 10px !important;
+    transition: all .2s ease-in-out;
+    width: 100%;
+    margin: 0
+}
+
+.bootstrap-tagsinput .tag {
+    line-height: inherit
+}
+
+.input-group-addon {
+    border-radius: 0 !important;
+    background: #f1f1f1;
+    border-color: #dce1e4
+}
+
+.bootstrap-timepicker-widget input {
+    border-radius: 0;
+    border: 1px solid #dce1e4;
+    padding: 6px 10px !important;
+    transition: all .2s ease-in-out;
+    width: 45px !important
+}
+
+.bootstrap-timepicker-widget input, .dataTables_wrapper .dataTables_filter input, .dataTables_wrapper .dataTables_length select {
+    background: #fff;
+    box-shadow: none !important;
+    font-size: 13px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out
+}
+
+.bootstrap-timepicker-widget input:focus {
+    border: 1px solid #bdc5c9;
+    background: #fff
+}
+
+.bootstrap-timepicker-widget .icon-chevron-up:before {
+    font-family: FontAwesome;
+    content: "\f106";
+    font-style: normal
+}
+
+.bootstrap-timepicker-widget .icon-chevron-down:before {
+    font-family: FontAwesome;
+    content: "\f107";
+    font-style: normal
+}
+
+.bootstrap-timepicker-widget a {
+    text-decoration: none
+}
+
 .table td, .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     padding: 15px !important
 }
 
 .dataTables_wrapper .dataTables_filter input, .dataTables_wrapper .dataTables_length select {
-    background: #fff;
     border-radius: 0;
     border: 1px solid #dce1e4;
-    box-shadow: none !important;
-    font-size: 13px;
     padding: 6px 10px !important;
-    -webkit-transition: all .2s ease-in-out;
-    -moz-transition: all .2s ease-in-out;
-    -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out
 }
 
@@ -1999,6 +2108,10 @@ tr.group, tr.group:hover {
     outline: 0
 }
 
+.colorpicker, .datepicker {
+    padding: 10px !important
+}
+
 .note-editor .note-statusbar {
     background: 0 0
 }
@@ -2009,12 +2122,7 @@ tr.group, tr.group:hover {
 
 .center {
     margin: 0 auto;
-    float: none !important;
-    display: block
-}
-
-.display-block {
-    display: block
+    float: none !important
 }
 
 .display-inline {
@@ -2032,7 +2140,6 @@ tr.group, tr.group:hover {
 }
 
 .datepicker {
-    padding: 10px !important;
     border: 1px solid #e0e0e0 !important;
     border-radius: 0 !important;
     -webkit-box-shadow: 0 5px 5px -5px rgba(0, 0, 0, .1) !important;
@@ -2050,8 +2157,8 @@ tr.group, tr.group:hover {
     border: 0
 }
 
-.colorpicker {
-    padding: 10px !important
+#flot3 .pie-chart-legend, #flotTip {
+    padding: 5px
 }
 
 .dropzone {
@@ -2063,8 +2170,7 @@ tr.group, tr.group:hover {
 .img-preview {
     height: 150px;
     width: 220px;
-    overflow: hidden;
-    text-align: center
+    overflow: hidden
 }
 
 .jqstooltip {
@@ -2082,10 +2188,6 @@ tr.group, tr.group:hover {
     height: 250px
 }
 
-#flot3 .pie-chart-legend {
-    padding: 5px
-}
-
 #flot4 {
     width: 100%;
     height: 250px
@@ -2095,7 +2197,6 @@ tr.group, tr.group:hover {
     border-radius: 0;
     background: rgba(51, 51, 51, .8);
     color: #fff;
-    padding: 5px;
     font-size: 13px !important
 }
 
@@ -2156,7 +2257,13 @@ tr.group, tr.group:hover {
 }
 
 .fc-state-default {
-    border: 1px solid
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    background-image: none;
+    color: #333;
+    text-shadow: 0;
+    box-shadow: 0;
+    outline: 0 !important
 }
 
 .fc-state-default.fc-corner-left {
@@ -2167,16 +2274,6 @@ tr.group, tr.group:hover {
 .fc-state-default.fc-corner-right {
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px
-}
-
-.fc-state-default {
-    background-color: #fff;
-    background-image: none;
-    border-color: #e5e5e5;
-    color: #333;
-    text-shadow: 0;
-    box-shadow: 0;
-    outline: 0 !important
 }
 
 .fc-state-active, .fc-state-disabled, .fc-state-down, .fc-state-hover {
@@ -2271,11 +2368,11 @@ tr.group, tr.group:hover {
 
 .navbar .logo-box .logo-text {
     font-size: 20px;
-    font-family: cursive;
+    font-weight: 700;
     line-height: 60px;
     padding: 0 25px 0 0;
     vertical-align: middle;
-    display: block;
+    display: block
 }
 
 .navbar .logo-box a:focus, .navbar .logo-box a:hover {
@@ -2374,6 +2471,13 @@ tr.group, tr.group:hover {
     box-shadow: 0 5px 5px -5px rgba(0, 0, 0, .1)
 }
 
+.dropdown-menu:after, .dropdown-menu:before {
+    right: auto;
+    position: absolute;
+    display: inline-block !important;
+    content: ''
+}
+
 .dropdown-menu li {
     font-size: 13px
 }
@@ -2387,27 +2491,22 @@ tr.group, tr.group:hover {
 }
 
 .dropdown-menu:before {
-    position: absolute;
     top: -8px;
     left: 9px;
-    right: auto;
-    display: inline-block !important;
     border-right: 8px solid transparent;
     border-bottom: 8px solid #d8dee4;
-    border-left: 8px solid transparent;
-    content: ''
+    border-left: 8px solid transparent
+}
+
+.dropdown-menu.title-caret:after, .dropdown-menu:after {
+    border-bottom: 7px solid #fff
 }
 
 .dropdown-menu:after {
-    position: absolute;
     top: -7px;
     left: 10px;
-    right: auto;
-    display: inline-block !important;
     border-right: 7px solid transparent;
-    border-bottom: 7px solid #fff;
-    border-left: 7px solid transparent;
-    content: ''
+    border-left: 7px solid transparent
 }
 
 .btn-group.dropup > .dropdown-menu:after, .btn-group.dropup > .dropdown-menu:before, .dropdown-toggle.dropup > .dropdown-menu:after, .dropdown-toggle.dropup > .dropdown-menu:before, .dropdown.dropup > .dropdown-menu:after, .dropdown.dropup > .dropdown-menu:before {
@@ -2434,15 +2533,15 @@ tr.group, tr.group:hover {
     left: auto
 }
 
-.dropdown-menu.title-caret:after {
-    border-bottom: 7px solid #fff
-}
-
 .dropdown-menu > li.active > a, .dropdown-menu > li.active > a:active, .dropdown-menu > li.active > a:focus, .dropdown-menu > li.active > a:hover {
     background: #F7F7F7;
     color: #333
 }
-
+@media(max-width:767px){
+    .navbar-left{
+        display: none;
+    }
+}
 .drop-title {
     display: block;
     border-bottom: 1px solid #F3F3F3;
@@ -2522,10 +2621,6 @@ tr.group, tr.group:hover {
     display: inline-block
 }
 
-.messages {
-    max-height: 300px
-}
-
 .messages li a {
     color: #bababa;
     font-size: 13px;
@@ -2562,6 +2657,11 @@ tr.group, tr.group:hover {
     border-radius: 50%;
     border: 2px solid #FFF;
     background: #ccc
+}
+
+.task-icon.badge, .tasks li a {
+    display: block;
+    position: relative
 }
 
 .online.on {
@@ -2605,19 +2705,13 @@ tr.group, tr.group:hover {
     float: right
 }
 
-.tasks {
-    max-height: 300px
-}
-
 .tasks li a {
     color: #bababa;
     font-size: 13px;
     padding-left: 15px;
     text-decoration: none;
-    display: block;
     padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative
+    padding-bottom: 10px
 }
 
 .tasks li {
@@ -2631,15 +2725,12 @@ tr.group, tr.group:hover {
 .task-icon.badge {
     height: 25px;
     width: 25px;
-    display: block;
     float: left;
-    position: relative;
     margin-right: 10px;
     padding-top: 6px
 }
 
 .task-icon i {
-    text-align: center;
     font-size: 12px
 }
 
@@ -2731,21 +2822,22 @@ tr.group, tr.group:hover {
     overflow: visible !important
 }
 
-.sidebar-header {
-    overflow: hidden;
-    clear: both;
+.sidebar-header, .sidebar-profile {
     position: relative;
+    overflow: hidden
+}
+
+.sidebar-header {
+    clear: both;
     padding: 20px
 }
 
-.sidebar-profile-image {
+.sidebar-profile, .sidebar-profile-image {
     display: block
 }
 
-.sidebar-profile {
-    overflow: hidden;
-    position: relative;
-    display: block
+.horizontal-bar .page-sidebar-inner, .hover-menu .sidebar, .hover-menu .sidebar .menu, .hover-menu .sidebar .page-sidebar-inner, .hover-menu .sidebar .slimScrollDiv, .small-sidebar .horizontal-bar .slimScrollDiv {
+    overflow: visible !important
 }
 
 .sidebar-profile a {
@@ -2762,8 +2854,7 @@ tr.group, tr.group:hover {
     color: #fff;
     font-weight: 600;
     display: block;
-    padding: 8px 0 0;
-    text-align: center
+    padding: 8px 0 0
 }
 
 .sidebar-profile span small {
@@ -2801,10 +2892,6 @@ tr.group, tr.group:hover {
     }
 }
 
-.small-sidebar .horizontal-bar .slimScrollDiv {
-    overflow: visible !important
-}
-
 .page-horizontal-bar.page-header-fixed .horizontal-bar {
     padding-top: 60px
 }
@@ -2834,10 +2921,6 @@ tr.group, tr.group:hover {
 
 .page-horizontal-bar .navbar .logo-box {
     border-right: 0
-}
-
-.horizontal-bar .page-sidebar-inner {
-    overflow: visible !important
 }
 
 .horizontal-bar .accordion-menu {
@@ -3156,10 +3239,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     width: 200px
 }
 
-.hover-menu .sidebar, .hover-menu .sidebar .menu, .hover-menu .sidebar .page-sidebar-inner, .hover-menu .sidebar .slimScrollDiv {
-    overflow: visible !important
-}
-
 .hover-menu .accordion-menu ul li a {
     text-align: left !important;
     padding: 12px 25px
@@ -3169,7 +3248,7 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     display: inline
 }
 
-.hover-menu .sidebar .slimScrollBar, .hover-menu .slimScrollBar {
+.hover-menu .sidebar .slimScrollBar, .hover-menu .slimScrollBar, .small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .menu.accordion-menu li a .arrow, .small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .menu.accordion-menu li a .badge, .small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .menu.accordion-menu li a p, .small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .menu.accordion-menu li.menu-title {
     display: none !important
 }
 
@@ -3214,10 +3293,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 
 .small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .sidebar:hover .menu.accordion-menu li a .menu-icon {
     font-size: 20px
-}
-
-.small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .menu.accordion-menu li a .arrow, .small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .menu.accordion-menu li a .badge, .small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .menu.accordion-menu li a p, .small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .menu.accordion-menu li.menu-title {
-    display: none !important
 }
 
 .small-sidebar.page-sidebar-fixed:not(.page-horizontal-bar) .menu.accordion-menu li a p {
@@ -3326,6 +3401,10 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     border-bottom: 1px solid transparent
 }
 
+.page-breadcrumb, .page-title {
+    border-bottom: 1px solid #e9e9e9
+}
+
 .small-sidebar:not(.page-sidebar-fixed) .accordion-menu ul li a {
     display: block;
     padding: 10px 15px !important;
@@ -3344,6 +3423,11 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 .small-sidebar:not(.page-sidebar-fixed) .accordion-menu li a p {
     display: block;
     text-align: left
+}
+
+.bs-glyphicons-list li, .bs-glyphicons-list li span {
+    display: block;
+    text-align: center
 }
 
 .small-sidebar:not(.page-sidebar-fixed) .accordion-menu li.menu-title {
@@ -3397,8 +3481,7 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 }
 
 .page-title {
-    padding: 15px 20px;
-    border-bottom: 1px solid #e9e9e9
+    padding: 15px 20px
 }
 
 .page-title h3 {
@@ -3409,9 +3492,13 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     margin: 0
 }
 
+.page-breadcrumb ol.breadcrumb li a, .page-breadcrumb ol.breadcrumb li.active, .page-breadcrumb ul li a {
+    font-size: 13px;
+    color: #90999c
+}
+
 .page-breadcrumb {
     padding: 8px 20px;
-    border-bottom: 1px solid #e9e9e9;
     background: #f5f5f5
 }
 
@@ -3423,11 +3510,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     margin-bottom: 0
 }
 
-.page-breadcrumb ol.breadcrumb li a, .page-breadcrumb ol.breadcrumb li.active {
-    font-size: 13px;
-    color: #90999c
-}
-
 .page-breadcrumb ul {
     margin: 0
 }
@@ -3435,11 +3517,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 .page-breadcrumb ul li {
     float: left;
     display: inline
-}
-
-.page-breadcrumb ul li a {
-    font-size: 13px;
-    color: #90999c
 }
 
 #main-wrapper {
@@ -3453,30 +3530,40 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     display: block;
     position: absolute;
     bottom: 0;
-    padding: 19px 25px;
-    border-top: 1px solid #e9e9e9
+    border-top: 1px solid #e9e9e9;
+    padding: 19px 25px
+}
+
+.push-sidebar, .search-button a {
+    text-decoration: none;
+    padding: 20px 18px;
+    color: #5F5F5F;
+    border: none;
+    line-height: 20px;
+    font-size: 17px
+}
+
+.fontawesome-icon-list .fa-item:hover, .line-icons .line-icon-item:hover {
+    background: #f1f1f1
 }
 
 .sidebar-pusher {
     position: absolute;
     left: 0;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     z-index: 9999;
     display: none
 }
 
+.search-button, .sidebar-pusher {
+    top: 50%;
+    -webkit-transform: translateY(-50%)
+}
+
 .push-sidebar {
     display: inline-block !important;
-    padding: 20px 18px;
-    color: #5F5F5F;
-    border: none;
     position: relative;
-    line-height: 20px;
-    float: left;
-    font-size: 17px;
-    text-decoration: none
+    float: left
 }
 
 .push-sidebar:hover {
@@ -3485,8 +3572,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 
 .search-button {
     position: absolute;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     z-index: 9999;
     display: none;
@@ -3495,17 +3580,11 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 
 .search-button a {
     display: inline-block !important;
-    padding: 20px 18px;
-    color: #5F5F5F;
-    border: none;
     position: relative;
-    line-height: 20px;
-    float: right;
-    font-size: 17px;
-    text-decoration: none
+    float: right
 }
 
-.fontawesome-icon-list .fa-item {
+.fontawesome-icon-list .fa-item, .line-icons .line-icon-item {
     padding: 10px 20px;
     color: #333
 }
@@ -3514,18 +3593,8 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     margin-right: 5px
 }
 
-.fontawesome-icon-list .fa-item:hover {
-    background: #f1f1f1
-}
-
 .line-icons .line-icon-item {
-    padding: 10px 20px;
-    color: #333;
     display: block
-}
-
-.line-icons .line-icon-item:hover {
-    background: #f1f1f1
 }
 
 .bs-glyphicons-list li span.glyphicon {
@@ -3534,30 +3603,16 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     font-size: 24px
 }
 
-.bs-glyphicons-list li span {
-    text-align: center;
-    display: block
-}
-
 .bs-glyphicons-list li {
-    display: block;
     float: left;
     width: 25%;
     height: 115px;
     padding: 10px;
     font-size: 10px;
     line-height: 1.4;
-    text-align: center;
     background-color: #f9f9f9;
     border: 1px solid #fff;
     list-style-type: none
-}
-
-@media (min-width: 768px) {
-    .bs-glyphicons-list li {
-        width: 12.5%;
-        font-size: 13px
-    }
 }
 
 @media (min-width: 768px) {
@@ -3634,6 +3689,10 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     text-decoration: line-through
 }
 
+.inbox-widget a, .mailbox-nav li a, .message-attachment a, .post-options a, .search-item a, .timeline-options a {
+    text-decoration: none
+}
+
 .remove-todo-item {
     color: #ccc;
     visibility: hidden
@@ -3704,6 +3763,11 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 
 .stats-info ul li:last-child {
     border-bottom: 0
+}
+
+.inbox-widget .inbox-item, .weather-top {
+    border-bottom: 1px solid #f1f1f1;
+    overflow: hidden
 }
 
 .stats-info ul li i {
@@ -3780,6 +3844,11 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     font-size: 22px
 }
 
+.weather-days li i, .weather-days li span {
+    display: block;
+    text-align: center
+}
+
 .weather-day small {
     font-size: 11px;
     color: #8e8e8e;
@@ -3797,8 +3866,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 }
 
 .weather-top {
-    border-bottom: 1px solid #f1f1f1;
-    overflow: hidden;
     padding: 0 0 15px;
     margin: 0 0 15px
 }
@@ -3809,15 +3876,8 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     border-top: 1px solid #f1f1f1
 }
 
-.weather-days li span {
-    display: block;
-    text-align: center
-}
-
 .weather-days li i {
-    display: block;
     font-size: 22px;
-    text-align: center;
     margin: 10px 0
 }
 
@@ -3861,19 +3921,21 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 
 .inbox-widget a {
     display: block;
-    overflow: hidden;
-    text-decoration: none
+    overflow: hidden
 }
 
 .inbox-widget .inbox-item {
     padding: 10px 0;
-    border-bottom: 1px solid #f1f1f1;
-    overflow: hidden;
     position: relative
 }
 
 .inbox-widget a:last-child > .inbox-item {
     border-bottom: 0
+}
+
+.timeline-comment, .timeline-options {
+    overflow: hidden;
+    border-bottom: 1px solid #f1f1f1
 }
 
 .inbox-widget .inbox-item .inbox-item-img {
@@ -4017,10 +4079,8 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 }
 
 .timeline-options {
-    overflow: hidden;
     margin-top: 20px;
     margin-bottom: 20px;
-    border-bottom: 1px solid #f1f1f1;
     padding: 10px 0
 }
 
@@ -4028,8 +4088,7 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     display: block;
     margin-right: 20px;
     float: left;
-    color: #333;
-    text-decoration: none
+    color: #333
 }
 
 .timeline-options a i {
@@ -4041,10 +4100,8 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 }
 
 .timeline-comment {
-    overflow: hidden;
     margin-bottom: 10px;
     width: 100%;
-    border-bottom: 1px solid #f1f1f1;
     padding-bottom: 5px
 }
 
@@ -4090,7 +4147,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     margin-right: 20px;
     float: left;
     color: #333;
-    text-decoration: none;
     font-size: 17px
 }
 
@@ -4106,7 +4162,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     display: block;
     padding: 10px 7px;
     color: #999;
-    text-decoration: none;
     border-bottom: 1px solid #E7EAEC;
     overflow: hidden
 }
@@ -4121,7 +4176,8 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 
 .mailbox-content {
     background: #fff;
-    padding: 15px
+    padding: 15px;
+    overflow: hidden
 }
 
 .mailbox-header {
@@ -4130,10 +4186,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 
 .mailbox-header h2 {
     margin: 3px 0
-}
-
-.mailbox-content {
-    overflow: hidden
 }
 
 .mailbox-content table thead tr th {
@@ -4161,11 +4213,19 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     display: none
 }
 
+.message-sender img, .message-sender p {
+    display: inline-block
+}
+
 .message-header {
     overflow: hidden;
     border-bottom: 1px solid #f1f1f1;
     padding: 5px 0 15px;
     margin-bottom: 10px
+}
+
+.message-content, .message-sender {
+    padding: 0 0 5px
 }
 
 .message-header h3 {
@@ -4180,40 +4240,24 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     margin: 0
 }
 
-.message-sender {
-    overflow: hidden;
+.message-attachments, .message-content, .message-sender {
     border-bottom: 1px solid #f1f1f1;
-    padding: 0 0 5px;
+    overflow: hidden;
     margin-bottom: 10px
 }
 
 .message-sender img {
     width: 30px;
     border-radius: 50%;
-    display: inline-block;
     margin-right: 5px
-}
-
-.message-sender p {
-    display: inline-block
 }
 
 .message-sender span {
     color: #7F7F7F
 }
 
-.message-content {
-    overflow: hidden;
-    border-bottom: 1px solid #f1f1f1;
-    padding: 0 0 5px;
-    margin-bottom: 10px
-}
-
 .message-attachments {
-    overflow: hidden;
-    border-bottom: 1px solid #f1f1f1;
-    padding: 0 0 15px;
-    margin-bottom: 10px
+    padding: 0 0 15px
 }
 
 .message-attachment {
@@ -4224,11 +4268,11 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     border: 1px solid #f1f1f1
 }
 
-.message-attachment a {
-    text-decoration: none
+.attachment-info p, .box-notifications ul li p {
+    margin: 0
 }
 
-.message-attachment img {
+.compose-options, .message-attachment img {
     display: block;
     width: 100%
 }
@@ -4236,10 +4280,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 .attachment-info {
     background: #f9f9f9;
     padding: 10px
-}
-
-.attachment-info p {
-    margin: 0
 }
 
 .attachment-info span {
@@ -4253,14 +4293,16 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 }
 
 .compose-options {
-    width: 100%;
-    overflow: hidden;
-    display: block
+    overflow: hidden
 }
 
 .box-notifications {
     max-height: 312px;
     overflow-y: scroll
+}
+
+.chat .chat-item, .color-switcher, .info, .info-box, .login-box .user-box form, .messages li a, .messages li a .msg-img, .messages li a .msg-text, .messages li a .msg-time, .navbar .logo-box, .navbar .logo-box a, .page-breadcrumb, .page-breadcrumb .breadcrumb, .page-breadcrumb ul, .page-footer, .page-inner, .search-form, .small-sidebar .accordion-menu li a, .small-sidebar .page-sidebar-fixed .page-inner, .tasks li a, .tasks li a .task-icon, .text-box, .top-menu .navbar-nav > li > a > img, body:not(.small-sidebar):not(.page-horizontal-bar) .menu.accordion-menu {
+    overflow: hidden
 }
 
 .box-notifications ul li {
@@ -4276,10 +4318,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 .box-notifications ul li:last-child {
     padding: 11px 0 0;
     border-bottom: 0
-}
-
-.box-notifications ul li p {
-    margin: 0
 }
 
 .page-error #main-wrapper {
@@ -4330,10 +4368,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     margin: 0 auto
 }
 
-.login-box .user-box form {
-    overflow: hidden
-}
-
 .login-alt .login-box {
     max-width: 100%
 }
@@ -4348,10 +4382,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     margin: 0
 }
 
-.search-item a {
-    text-decoration: none
-}
-
 .search-item a.search-link {
     color: #22BAA0
 }
@@ -4364,8 +4394,7 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 .chat .chat-item {
     display: block;
     padding: 10px 15px;
-    width: 100%;
-    overflow: hidden
+    width: 100%
 }
 
 .chat .chat-item .chat-image {
@@ -4416,10 +4445,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     -moz-transition: all .1s ease-in-out;
     -o-transition: all .1s ease-in-out;
     transition: all .1s ease-in-out
-}
-
-.color-switcher, .info, .info-box, .messages li a, .messages li a .msg-img, .messages li a .msg-text, .messages li a .msg-time, .navbar .logo-box, .navbar .logo-box a, .page-breadcrumb, .page-breadcrumb .breadcrumb, .page-breadcrumb ul, .page-footer, .page-inner, .search-form, .small-sidebar .accordion-menu li a, .small-sidebar .page-sidebar-fixed .page-inner, .tasks li a, .tasks li a .task-icon, .text-box, .top-menu .navbar-nav > li > a > img, body:not(.small-sidebar):not(.page-horizontal-bar) .menu.accordion-menu {
-    overflow: hidden
 }
 
 .color-switcher {
@@ -4492,7 +4517,11 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 467px) {
+    .horizontal-bar, .small-sidebar .horizontal-bar {
+        height: auto !important
+    }
+
     .page-horizontal-bar.compact-menu.small-sidebar .menu.accordion-menu ul {
         top: 0 !important
     }
@@ -4523,10 +4552,13 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
         visibility: hidden;
         display: none;
         width: 0 !important;
+        transition: opacity .3s ease-in-out
+    }
+
+    .page-horizontal-bar .sidebar.visible, .sidebar, .small-sidebar .sidebar.visible {
         -webkit-transition: opacity .3s ease-in-out;
         -moz-transition: opacity .3s ease-in-out;
-        -o-transition: opacity .3s ease-in-out;
-        transition: opacity .3s ease-in-out
+        -o-transition: opacity .3s ease-in-out
     }
 
     body:not(.page-header-fixed) .sidebar {
@@ -4539,9 +4571,6 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
         visibility: visible;
         width: 65px !important;
         display: block;
-        -webkit-transition: opacity .3s ease-in-out;
-        -moz-transition: opacity .3s ease-in-out;
-        -o-transition: opacity .3s ease-in-out;
         transition: opacity .3s ease-in-out
     }
 
@@ -4551,16 +4580,16 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
         visibility: visible;
         display: block;
         width: 240px;
-        -webkit-transition: opacity .3s ease-in-out;
-        -moz-transition: opacity .3s ease-in-out;
-        -o-transition: opacity .3s ease-in-out;
         transition: opacity .3s ease-in-out
     }
 
-    .horizontal-bar, .small-sidebar .sidebar {
+    .horizontal-bar, .small-sidebar .sidebar, body:not(.small-sidebar) .sidebar.visible {
         -webkit-transition: opacity .3s ease-in-out;
         -moz-transition: opacity .3s ease-in-out;
-        -o-transition: opacity .3s ease-in-out;
+        -o-transition: opacity .3s ease-in-out
+    }
+
+    .horizontal-bar, .small-sidebar .sidebar {
         transition: opacity .3s ease-in-out
     }
 
@@ -4626,14 +4655,9 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
 
     .horizontal-bar {
         float: left;
-        height: auto !important;
         display: block;
         z-index: 998;
         overflow: visible !important
-    }
-
-    .small-sidebar .horizontal-bar {
-        height: auto !important
     }
 
     .horizontal-bar .menu li {
@@ -4705,6 +4729,10 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     background: 0 0
 }
 
+.menu, .menu ul, .sidebar, .sidebar-header {
+    background: #fff
+}
+
 .navbar .logo-box a {
     color: #5f5f5f
 }
@@ -4713,23 +4741,15 @@ body:not(.small-sidebar) .horizontal-bar .menu.accordion-menu > li > a > .menu-i
     color: #22BAA0
 }
 
-.sidebar, .sidebar-header {
-    background: #fff
-}
-
 .sidebar-profile span small {
     color: #899dc1
-}
-
-.menu, .menu ul {
-    background: #fff
 }
 
 .menu.accordion-menu a {
     color: #5f5f5f
 }
 
-.menu.accordion-menu > li.active.open > a, .menu.accordion-menu > li.active > a, .menu.accordion-menu > li.open > a, .menu.accordion-menu > li > a:hover {
+.menu.accordion-menu ul li a:hover, .menu.accordion-menu ul li.active a, .menu.accordion-menu > li.active.open > a, .menu.accordion-menu > li.active > a, .menu.accordion-menu > li.open > a, .menu.accordion-menu > li > a:hover {
     color: #22BAA0
 }
 
@@ -4737,8 +4757,11 @@ body:not(.page-horizontal-bar).compact-menu .menu > li.active, body:not(.page-ho
     border-left: 3px solid #22BAA0
 }
 
-.menu.accordion-menu ul li a:hover, .menu.accordion-menu ul li.active a {
-    color: #22BAA0
+.horizontal-bar .menu > li > ul, .small-sidebar .menu > li > ul {
+    border-left: 1px solid #e9e9e9;
+    border-right: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
+    background: #f7f7f7
 }
 
 .menu.accordion-menu ul li a {
@@ -4749,13 +4772,6 @@ body:not(.page-horizontal-bar).compact-menu .menu > li.active, body:not(.page-ho
     background: #f7f7f7;
     border-top: 1px solid #e9e9e9;
     border-right: 1px solid #e9e9e9;
-    border-bottom: 1px solid #e9e9e9
-}
-
-.small-sidebar .menu > li > ul {
-    background: #f7f7f7;
-    border-right: 1px solid #e9e9e9;
-    border-left: 1px solid #e9e9e9;
     border-bottom: 1px solid #e9e9e9
 }
 
@@ -4771,9 +4787,5 @@ body:not(.page-horizontal-bar).compact-menu .menu > li.active, body:not(.page-ho
 }
 
 .horizontal-bar .menu > li > ul {
-    border-top: 0;
-    border-left: 1px solid #e9e9e9;
-    border-right: 1px solid #e9e9e9;
-    border-bottom: 1px solid #e9e9e9;
-    background: #f7f7f7
+    border-top: 0
 }
