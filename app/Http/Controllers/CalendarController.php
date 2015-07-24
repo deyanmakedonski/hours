@@ -17,7 +17,8 @@ class CalendarController extends BaseController
     public function postHourreservation(){
 
         \App\ReservedHours::create(array('service_id' => \Request::input('service_id'),'user_id'=>\Request::input('user_id'),'client'=>\Request::input('client_name'),'start'=>\Request::input('start'),'end'=>\Request::input('end')));
-        return 'true';
+        $hour_id = \App\ReservedHours::select('id')->get()->last();
+        return $hour_id;
     }
 
 }

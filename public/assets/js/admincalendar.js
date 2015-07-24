@@ -28,21 +28,30 @@ $('#admincalendar').fullCalendar({
         drop: function(date) {
     },
     droppable: true,
-        eventRender: function(event, element) {
+    eventRender: function(event, element) {
         element.qtip({
             content: event.description,
             position: {
                 my: 'bottom center',
                 at: 'top center'
             },
+            show: {
+                event: 'mouseenter ',
+
+            },
+            hide: {
+                event: 'mouseleave dblclick'
+            },
             style: {
                 classes: 'myQtip'
             }
         });
-        console.log();
+        element.bind('dblclick', function() {
+            $('#admincalendar').fullCalendar('removeEvents',event._id);
+
+        });
     },
     eventClick: function(event, element) {
-
         console.log(event);
     }
 
@@ -66,9 +75,11 @@ $('#hourElements button[type="submit"]').on('click',function(e){
             console.log(er);
         }).success(function(e){
             console.log(e);
+            data.hour_id = e.id;
+            addEvent();
+            cleanmodal();
         });
-        addEvent();
-        cleanmodal();
+
 
     }else{
         console.log('Изберете процедура!');
@@ -87,9 +98,11 @@ function getEnd(){
 };
 
 function addEvent(){
+    console.log(data);
     $("#admincalendar").fullCalendar('renderEvent',
         {
-            title: data.name,
+            hour_id:data.hour_id,
+            title: data.name.substr(1,data.name.indexOf(')')-1),
             description:$('.selected-user :selected').text()+'</br>'+data.name+'<br>'+data.client_name,
             start: data.start,
             end: data.end
