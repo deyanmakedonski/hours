@@ -137,7 +137,7 @@
   width: 70px;
   height: 70px;
   border: dashed 2px;
-  border-style: solid dashed 2px;
+  border-style: solid dashed;
   border-radius: 50%;
   overflow: hidden; }
 
@@ -183,5 +183,10 @@ input[name="salary"] {
   font-size: 16px; }
 
 /* Calendar  end*/
+/* Tasks */
+.tasks-personal {
+  width: 300px; }
+
+/* Tasks end */
 
 /*# sourceMappingURL=app.css.map */

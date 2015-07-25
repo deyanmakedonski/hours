@@ -2741,7 +2741,7 @@ tr.group, tr.group:hover {
     padding: 3px 0 0;
     margin: 0;
     float: left;
-    width: 148px
+    width: 180px;
 }
 
 .tasks li a .badge {

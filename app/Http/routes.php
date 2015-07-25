@@ -21,7 +21,8 @@ Route::controllers([
     'lock-screen' => 'LockScreenController',
     'avatar/{id}' => 'AvatarController',
     'accounts' => 'AccountController',
-    'calendar' => 'CalendarController'
+    'calendar' => 'CalendarController',
+    'tasks' => 'TaskController'
 ]);
 
 Route::post('/test',function(){

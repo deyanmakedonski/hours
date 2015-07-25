@@ -18,6 +18,8 @@ class CreateServicesTable extends Migration
             $table->text('name');
             $table->decimal('price',6,2);
             $table->integer('time');
+
+            $table->timestamps();
         });
     }
 

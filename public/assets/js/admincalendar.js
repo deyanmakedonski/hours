@@ -74,7 +74,6 @@ $('#hourElements button[type="submit"]').on('click',function(e){
         $.post('/calendar/hourreservation',data).error(function(er){
             console.log(er);
         }).success(function(e){
-            console.log(e);
             data.hour_id = e.id;
             addEvent();
             cleanmodal();
@@ -98,7 +97,6 @@ function getEnd(){
 };
 
 function addEvent(){
-    console.log(data);
     $("#admincalendar").fullCalendar('renderEvent',
         {
             hour_id:data.hour_id,

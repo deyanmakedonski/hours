@@ -13,9 +13,9 @@ class CreateUserCategoryTable extends Migration
     public function up()
     {
         Schema::create('user_category', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('user_id');
             $table->integer('category_id');
+            $table->primary(array('user_id', 'category_id'));
         });
     }
 

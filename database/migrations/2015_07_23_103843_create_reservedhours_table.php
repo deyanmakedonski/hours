@@ -19,6 +19,8 @@ class CreateReservedhoursTable extends Migration
             $table->text('client');
             $table->string('start');
             $table->string('end');
+
+            $table->timestamps();
         });
     }
 
