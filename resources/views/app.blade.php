@@ -169,14 +169,18 @@
 <!-- Page Content -->
 <div class="cd-overlay"></div>
 
+
 @include('partials.js')
+
+<script src={{ URL::to('assets/js/checkplugin.js') }}></script>
+<script src={{ URL::to('assets/js/tasks.js') }}></script>
 
 <script type="text/javascript">
     Globals = {
         _token : '{{csrf_token()}}'
     };
 </script>
-<script src={{ URL::to('assets/js/tasks.js') }}></script>
+
 
 @yield('scripts')
 

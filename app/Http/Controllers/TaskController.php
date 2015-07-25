@@ -15,4 +15,11 @@ class TaskController extends Controller
         $reservedPersonalHours = json_encode($reservedPersonalHours);
         return \Response::json(\View::make('partials.tasks',compact('reservedPersonalHours'))->render(),200);
     }
+
+    public function postFinishedtask(){
+        $reservedhour = \App\ReservedHours::find(\Request::input('hour_id'));
+        \App\FinishedHour::create(array('user_id'=>$reservedhour->user_id,'service_id'=>$reservedhour->service_id,'client'=>$reservedhour->client,'price'=>$reservedhour->service->price,'created_at'=>date('Y-m-d')));
+        \DB::table('reservedhours')->where('id','=',$reservedhour->id)->delete();
+        return 'true';
+    }
 }

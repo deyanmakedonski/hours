@@ -4,17 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ReservedHours extends Model
+class FinishedHour extends Model
 {
-    protected $table = 'reservedhours';
-    protected $fillable = ['user_id','service_id','client','start','end'];
+    public $timestamps = false;
+
+    protected $table = 'finishedhours';
+
+    protected $fillable = ['user_id','service_id','client','price','created_at'];
 
     public function user(){
         return $this->belongsTo('\App\User','user_id');
     }
-
     public function service(){
         return $this->belongsTo('\App\Service','service_id');
     }
-
 }
