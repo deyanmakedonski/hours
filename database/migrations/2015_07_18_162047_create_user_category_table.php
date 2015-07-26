@@ -15,7 +15,6 @@ class CreateUserCategoryTable extends Migration
         Schema::create('user_category', function (Blueprint $table) {
             $table->integer('user_id');
             $table->integer('category_id');
-            $table->primary(array('user_id', 'category_id'));
         });
     }
 

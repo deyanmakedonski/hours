@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', 'SomeRandomStringWith32Characters'),
+    'key' => 'EIdDnI1jliRmSBY1IOgzR1zxEu7G8WOs',
 
     'cipher' => 'AES-256-CBC',
 

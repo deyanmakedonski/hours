@@ -17,6 +17,7 @@
                $.post('/tasks/finishedtask',{_token:Globals._token,hour_id:$(this).closest('li').data('id')}).error(function(er){
                    console.log(er);
                }).success(function(e){
+                   $.fn.loadcalendar();
                    console.log(e);
                });
            });

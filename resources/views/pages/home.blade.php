@@ -23,7 +23,9 @@
             <div class="col-md-12">
                 <div class="panel panel-white">
                     <div class="panel-body">
-                        @include('partials.admincalendar')
+                        <div class="admin-cal-ajax">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -39,7 +41,6 @@
     <script type="text/javascript" src={{ URL::asset('assets/plugins/qtip/jquery.qtip.min.js') }}></script>
     <script>
         var services = JSON.parse('{!!json_encode($services) !!}');
-        var reservedHours = JSON.parse('{!! json_encode($reservedHours) !!}');
     </script>
     <script type="text/javascript" src={{ URL::asset('assets/js/selectplugin.js') }}></script>
     <script type="text/javascript" src={{ URL::asset('assets/js/admincalendar.js') }}></script>
