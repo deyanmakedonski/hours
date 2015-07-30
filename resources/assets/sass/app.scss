@@ -207,3 +207,28 @@ input[name="salary"]{
   width: 300px;
 }
 /* Tasks end */
+
+.removeEvent{
+  right: 0px;
+  float: right;
+  top: -12px;
+}
+
+.eventMenu{
+  position: absolute;
+  left: -25px;
+  height: 40px;
+  width: 20px;
+  border: solid 1px #3A87AD;
+  color: white;
+  border-radius: 2px;
+  background-color: #6AA4C1;
+  top: 0px;
+}
+.event-menu-icon{
+  cursor: pointer;
+  margin-top: 2px;
+  font-size:15px;
+  margin-bottom: 5px;
+  margin-left: 3px;
+}

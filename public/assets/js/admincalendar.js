@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var bool = true;
     (function($){
         $.fn.calendar = function(reservedHours){
             var currentLangCode = 'bg';
@@ -12,13 +13,17 @@ $(document).ready(function () {
                 dayClick:function(date, jsEvent, view){
                     $('#hourElements').modal('show');
                     data.start = date.format();
+                    if(!bool){
+                        $('.eventMenu').remove();
+                        bool = true;
+                    }
                 },
                 events: reservedHours,
                 defaultDate: $('#calendar').fullCalendar( 'today' ),
                 lang: currentLangCode,
                 defaultView: 'agendaWeek',
                 weekNumbers: true,
-                editable: true,
+                editable: false,
                 allDaySlot: false,
                 slotDuration: '00:15:01',
                 scrollTime: '10:00:00',
@@ -26,12 +31,10 @@ $(document).ready(function () {
                 maxTime: "23:00:00",
                 axisFormat: 'H:mm',
                 eventLimit: true, // allow "more" link when too many events
-
-                editable:false,
                 drop: function(date) {
                 },
                 droppable: true,
-                eventRender: function(event, element) {
+                eventRender: function(event, element, view) {
                     element.qtip({
                         content: event.description,
                         position: {
@@ -39,26 +42,46 @@ $(document).ready(function () {
                             at: 'top center'
                         },
                         show: {
-                            event: 'mouseenter ',
+                            event: 'mouseenter',
 
                         },
                         hide: {
-                            event: 'mouseleave dblclick'
+                            event: 'mouseleave'
                         },
                         style: {
                             classes: 'myQtip'
-                        }
+                        },
+                        onHide: function() { $(this).qtip('destroy'); }
                     });
                     element.bind('dblclick', function() {
-                        $('#admincalendar').fullCalendar('removeEvents',event._id);
+                        //$('#admincalendar').fullCalendar('removeEvents',event._id);
 
                     });
+                    element.bind('clickoutside', function() {
+                        //$('#admincalendar').fullCalendar('removeEvents',event._id);
+
+                    });
+                    element.bind('click', function() {
+                        //event.startEditable = true;
+                        if(event._id !=  $('.eventMenu').data('eventID')){
+                            $('.eventMenu').remove();
+                            bool = true;
+                        }
+                        if(bool){
+                            bool = false;
+                            element.append('<div data-eventID="'+event._id+'" class="eventMenu"></div>');
+                            $('.eventMenu').html('<div class="trash event-menu-icon icon icon-pencil"></div><div id="trash"  class="event-menu-icon icon icon-trash"></div>');
+                            delEvent(event);
+                        }
+                    });
+
                 },
-                eventClick: function(event, element) {
-                    console.log(event);
-                }
+                eventClick: function(event, jsEvent, view) {
+
+                },
 
             });
+
 
             var data = $('.select-service').select({
                 name:'Услуга',
@@ -127,20 +150,42 @@ $(document).ready(function () {
 
             $.post('calendar/html',{_token:Globals._token}).error(function(er){
                 console.log(er);
-            }).success(function(e){
-                $('.admin-cal-ajax').html(e)
-                av();
+            }).success(function(html){
+                av(html);
             });
 
-            function av(){
+            function av(html){
                 $.post('calendar/reservedhours',{_token:Globals._token}).error(function(er){
                     console.log(er);
                 }).success(function(e){
+                    $('.admin-cal-ajax').html(html);
                     $.fn.calendar(e);
                 });
             }
         }
     })(jQuery);
 
+    function delEvent(event){
+        $("#trash").on("click", function () {
+            var customModal = $('<div class="modal fade bs-example-modal-sm in" id="delEvent" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: block; padding-right: 17px;"> <div class="modal-dialog modal-sm"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close cancle-event" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> <h4 class="modal-title" id="mySmallModalLabel">Изтриване</h4> </div> <div class="modal-body">Потвърдете изтриването? </div> <div class="modal-footer"> <button type="button" class="btn btn-default cancle-event" data-dismiss="modal">Затвори</button> <button type="button" class="btn btn-danger">Изтрии</button> </div> </div> </div> </div>');
+            $('body').append(customModal);
+            $('#lngModal').modal({
+                backdrop    : 'static',
+                keyboard    : false,
+            });
+            $('#delEvent').modal('show');
+        });
+        $('.cancle-event').click(function(e){
+
+            $('#delEvent').on('hide.bs.modal', function () {
+                $(this).remove();
+            })
+
+        });
+    }
+
     $.fn.loadcalendar();
+
 });
+
+

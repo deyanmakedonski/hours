@@ -18,7 +18,6 @@
                    console.log(er);
                }).success(function(e){
                    $.fn.loadcalendar();
-                   console.log(e);
                });
            });
 
