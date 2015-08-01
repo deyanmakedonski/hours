@@ -11,8 +11,33 @@ $(document).ready(function () {
                     right: 'month,agendaWeek,agendaDay'
                 },
                 dayClick:function(date, jsEvent, view){
-                    $('#hourElements').modal('show');
-                    data.start = date.format();
+
+                    var myDate = moment(new Date());
+                    myDate = myDate.format();
+                    date = date.format();
+
+                    if(myDate > date){
+                        var customModal = $('<div class="modal fade bs-example-modal-sm in" id="pastHour" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: block; padding-right: 17px;"> <div class="modal-dialog modal-sm"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close cancle-event" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> <h4 class="modal-title" id="mySmallModalLabel">Грешка</h4> </div> <div class="modal-body">Не може да запазите отминал час ! </div> <div class="modal-footer"> <button type="button" class="btn btn-default cancle-event" data-dismiss="modal">Затвори</button></div> </div> </div> </div>');
+                        $('body').append(customModal);
+                        $('#pastHour').modal({
+                            backdrop    : 'static',
+                            keyboard    : false,
+                        });
+                        $('#pastHour').modal('show');
+                        $('.cancle-event').click(function(e){
+
+                            $('#pastHour').on('hide.bs.modal', function () {
+                                $(this).remove();
+                            })
+
+                        });
+                    }else{
+                        $('#hourElements').modal('show');
+                        data.start = date;
+                    }
+
+
+
                     if(!bool){
                         $('.eventMenu').remove();
                         bool = true;
@@ -31,6 +56,7 @@ $(document).ready(function () {
                 maxTime: "23:00:00",
                 axisFormat: 'H:mm',
                 eventLimit: true, // allow "more" link when too many events
+                eventBorderColor: '#fff',
                 drop: function(date) {
                 },
                 droppable: true,
@@ -71,12 +97,23 @@ $(document).ready(function () {
                             bool = false;
                             element.append('<div data-eventID="'+event._id+'" class="eventMenu"></div>');
                             $('.eventMenu').html('<div class="trash event-menu-icon icon icon-pencil"></div><div id="trash"  class="event-menu-icon icon icon-trash"></div>');
+                            $('.eventMenu').css('background-color',event.backgroundColor);
+                            $('.eventMenu').css('border-color','#fff');
                             delEvent(event);
                         }
                     });
 
                 },
                 eventClick: function(event, jsEvent, view) {
+
+                },
+                eventAfterRender: function(event, element, view) {
+                    var width = $(element).width();
+                    $(element).width(width/1.3+'px');
+                    var el = element.find('.fc-content');
+                    el.css('height',$(element).height());
+                    el.css('overflow','hidden');
+                    view.backgroundColor = '#ddd';
 
                 },
 
@@ -101,6 +138,7 @@ $(document).ready(function () {
                         console.log(er);
                     }).success(function(e){
                         data.hour_id = e.id;
+                        data.backgroundColor = $('.selected-user :selected').data('color');
                         addEvent();
                         cleanmodal();
                     });
@@ -128,6 +166,7 @@ $(document).ready(function () {
                         hour_id:data.hour_id,
                         title: data.name.substr(1,data.name.indexOf(')')-1),
                         description:$('.selected-user :selected').text()+'</br>'+data.name+'<br>'+data.client_name,
+                        backgroundColor: data.backgroundColor,
                         start: data.start,
                         end: data.end
                     }, true);
@@ -169,7 +208,7 @@ $(document).ready(function () {
         $("#trash").on("click", function () {
             var customModal = $('<div class="modal fade bs-example-modal-sm in" id="delEvent" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: block; padding-right: 17px;"> <div class="modal-dialog modal-sm"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close cancle-event" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> <h4 class="modal-title" id="mySmallModalLabel">Изтриване</h4> </div> <div class="modal-body">Потвърдете изтриването? </div> <div class="modal-footer"> <button type="button" class="btn btn-default cancle-event" data-dismiss="modal">Затвори</button> <button type="button" class="btn btn-danger">Изтрии</button> </div> </div> </div> </div>');
             $('body').append(customModal);
-            $('#lngModal').modal({
+            $('#delEvent').modal({
                 backdrop    : 'static',
                 keyboard    : false,
             });

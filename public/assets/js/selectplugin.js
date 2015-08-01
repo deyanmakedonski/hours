@@ -2,7 +2,7 @@ $(document).ready(function () {
     (function ($) {
 
         $.fn.select = function (options) {
-            var data = {service_id: null, category_id: null, name: null, time: null, price: null};
+            var data = {service_id: null,backgroundColor:null, category_id: null, name: null, time: null, price: null};
             var settings = $.extend({
                 name: 'Име',
                 dataName: 'service'
@@ -139,7 +139,7 @@ $(document).ready(function () {
                 }).success(function (e) {
                     $('.selected-user').html('');
                     e.forEach(function (user) {
-                        $('.selected-user').append('<option value="' + user.id + '">' + user.name + '</option');
+                        $('.selected-user').append('<option value="' + user.id + '" data-color="'+user.color+'">' + user.name + '</option');
                     });
                 });
             });

@@ -20,7 +20,7 @@
     {{--</div>--}}
     <div id="main-wrapper" class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-13">
                 <div class="panel panel-white">
                     <div class="panel-body">
                         <div class="admin-cal-ajax">

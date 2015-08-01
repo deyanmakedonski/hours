@@ -10,18 +10,18 @@ use App\Http\Controllers\Controller;
 class CalendarController extends BaseController
 {
     public function getUsers(){
-        $users = \DB::select("SELECT users.id,users.name FROM `users`,`user_category` WHERE user_category.category_id = '".\Request::input('category_id')."' AND users.id=user_category.user_id");
+        $users = \DB::select("SELECT users.id,users.name,users.eventcolor as color FROM `users`,`user_category` WHERE user_category.category_id = '".\Request::input('category_id')."' AND users.id=user_category.user_id");
         return \Response::json($users,200);
     }
 
     public function postReservedhours(){
 
         $hours = array();
-        $reservedHours = \DB::select('SELECT reservedhours.id as hour_id, users.name AS user_name,services.name as service_name,categories.name as category_name,reservedhours.client,reservedhours.start,reservedhours.end FROM `categories`, `reservedhours`,`services`,`users` WHERE reservedhours.user_id = users.id AND reservedhours.service_id = services.id AND categories.id = services.category_id');
-
+        $reservedHours = \DB::select('SELECT reservedhours.id as hour_id, users.name AS user_name,services.name as service_name,categories.name as category_name,reservedhours.client,reservedhours.start,reservedhours.end,users.eventcolor as color FROM `categories`, `reservedhours`,`services`,`users` WHERE reservedhours.user_id = users.id AND reservedhours.service_id = services.id AND categories.id = services.category_id');
         foreach($reservedHours as $reservedHour){
-            $obj = (object)array_fill_keys(array('hour_id','title','description','start','end'),'');
+            $obj = (object)array_fill_keys(array('hour_id','backgroundColor','title','description','start','end'),'');
             $obj->hour_id = $reservedHour->hour_id;
+            $obj->backgroundColor = $reservedHour->color;
             $obj->title = $reservedHour->category_name;
             $obj->description = $reservedHour->user_name.'<br>'.'('.$reservedHour->category_name.')-'.$reservedHour->service_name.'<br>'.$reservedHour->client;
             $obj->start = $reservedHour->start;
