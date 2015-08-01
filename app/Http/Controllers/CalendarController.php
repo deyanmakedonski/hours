@@ -44,5 +44,11 @@ class CalendarController extends BaseController
         return $hour_id;
     }
 
+    public function postDelevent(){
+
+        \DB::table('reservedhours')->where('id',\Request::input('hour_id'))->delete();
+        return 'true';
+    }
+
 
 }

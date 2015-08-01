@@ -28,7 +28,7 @@ $(document).ready(function () {
 
                             $('#pastHour').on('hide.bs.modal', function () {
                                 $(this).remove();
-                            })
+                            });
 
                         });
                     }else{
@@ -99,7 +99,7 @@ $(document).ready(function () {
                             $('.eventMenu').html('<div class="trash event-menu-icon icon icon-pencil"></div><div id="trash"  class="event-menu-icon icon icon-trash"></div>');
                             $('.eventMenu').css('background-color',event.backgroundColor);
                             $('.eventMenu').css('border-color','#fff');
-                            delEvent(event);
+                            delEvent(event,element);
                         }
                     });
 
@@ -157,8 +157,7 @@ $(document).ready(function () {
                 end.add(duration, 'milliseconds');
                 end = end.format();
                 return end;
-
-            };
+            }
 
             function addEvent(){
                 $("#admincalendar").fullCalendar('renderEvent',
@@ -204,21 +203,39 @@ $(document).ready(function () {
         }
     })(jQuery);
 
-    function delEvent(event){
+    function delEvent(event,element){
         $("#trash").on("click", function () {
-            var customModal = $('<div class="modal fade bs-example-modal-sm in" id="delEvent" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: block; padding-right: 17px;"> <div class="modal-dialog modal-sm"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close cancle-event" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> <h4 class="modal-title" id="mySmallModalLabel">Изтриване</h4> </div> <div class="modal-body">Потвърдете изтриването? </div> <div class="modal-footer"> <button type="button" class="btn btn-default cancle-event" data-dismiss="modal">Затвори</button> <button type="button" class="btn btn-danger">Изтрии</button> </div> </div> </div> </div>');
+            var customModal = $('<div class="modal fade bs-example-modal-sm in delEvent"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: block; padding-right: 17px;"> <div class="modal-dialog modal-sm"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close cancle-event" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> <h4 class="modal-title" id="mySmallModalLabel">Изтриване</h4> </div> <div class="modal-body">Потвърдете изтриването? </div> <div class="modal-footer"> <button type="button" class="btn btn-default cancle-event" data-dismiss="modal">Затвори</button> <button type="button" class="btn btn-danger delete-event">Изтрии</button> </div> </div> </div> </div>');
             $('body').append(customModal);
-            $('#delEvent').modal({
+            $('.delEvent').modal({
                 backdrop    : 'static',
                 keyboard    : false,
-            });
-            $('#delEvent').modal('show');
+            }).modal('show');
         });
         $('.cancle-event').click(function(e){
 
-            $('#delEvent').on('hide.bs.modal', function () {
+            $('.delEvent').on('hide.bs.modal', function () {
                 $(this).remove();
-            })
+            });
+            $('.qtip').remove();
+
+        });
+
+        $('.delete-event').click(function(e){
+
+            $('.delEvent').click(function(e){
+                $.post('/calendar/delevent',{_token:Globals._token,hour_id:event.hour_id}).error(function(er){
+                    console.log(er);
+                }).success(function(e){
+                    $('.delEvent').modal('hide').remove();
+                    $('.modal-backdrop').remove();
+                    $('#admincalendar').fullCalendar('removeEvents',event._id);
+                    $('.qtip').remove();
+                    $.fn.taskpluginreload();
+                });
+            });
+
+
 
         });
     }
