@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
-class AuthController extends \App\Http\Controllers\BaseController
+class AuthController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -22,12 +22,11 @@ class AuthController extends \App\Http\Controllers\BaseController
     | a simple trait to add these behaviors. Why don't you explore it?
     |
     */
-
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
-
     protected $loginPath =  '/account/login';
     protected $redirectAfterLogout = '/account/login';
     protected $redirectTo = '/home';
+
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
      * Create a new authentication controller instance.
@@ -36,8 +35,7 @@ class AuthController extends \App\Http\Controllers\BaseController
      */
     public function __construct()
     {
-        $this->middleware('acl', ['except' => ['getLogout']]);
-        parent::__construct();
+        $this->middleware('guest', ['except' => 'getLogout']);
     }
 
     public function getLogin(){
