@@ -57,12 +57,49 @@ $(document).ready(function () {
                 axisFormat: 'H:mm',
                 eventLimit: true, // allow "more" link when too many events
                 eventBorderColor: '#fff',
+                eventDurationEditable : false,
                 eventDrop: function(event, delta, revertFunc) {
 
-                    console.log(event.start.format());
-                    console.log(event.end.format());
-                    event.editable = false;
-                    $('.qtip').hide();
+                    var myDate = moment(new Date());
+                    myDate = myDate.format();
+                    var dateVer = event.start.format();
+
+                    if(myDate > dateVer){
+                        var customModal = $('<div class="modal fade bs-example-modal-sm in" id="pastHour" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: block; padding-right: 17px;"> <div class="modal-dialog modal-sm"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close cancle-event" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> <h4 class="modal-title" id="mySmallModalLabel">Грешка</h4> </div> <div class="modal-body">Не може да запазите отминал час ! </div> <div class="modal-footer"> <button type="button" class="btn btn-default cancle-event" data-dismiss="modal">Затвори</button></div> </div> </div> </div>');
+                        $('body').append(customModal);
+                        $('#pastHour').modal({
+                            backdrop    : 'static',
+                            keyboard    : false,
+                        });
+                        $('#pastHour').modal('show');
+                        $('.cancle-event').click(function(e){
+
+                            $('#pastHour').on('hide.bs.modal', function () {
+                                $(this).remove();
+                            });
+
+                        });
+                        $('.qtip').hide();
+                        event.editable = false;
+                        revertFunc();
+                    }else{
+                        $.post('/calendar/edithour',{_token:Globals._token,id:event.hour_id,start:event.start.format(),end:event.end.format()}).error(function(er){
+                            console.log(er);
+                        }).success(function(e){
+                            //console.log(e);
+                        });
+                        event.editable = false;
+                        $('.qtip').hide();
+                        $.fn.taskpluginreload();
+                    }
+
+                    //console.log(event.start.format());
+                    //console.log(event.end.format());
+                    //event.editable = false;
+                    //$('.qtip').hide();
+                    //if (!confirm("Are you sure about this change?")) {
+                    //    revertFunc();
+                    //}
                 },
                 droppable: false,
                 eventRender: function(event, element, view) {
@@ -238,7 +275,6 @@ $(document).ready(function () {
         $('#edit-event').click(function(e){
             event.editable = true;
             element.draggable();
-            alert('true');
         });
 
     }

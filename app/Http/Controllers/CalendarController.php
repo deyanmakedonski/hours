@@ -50,5 +50,10 @@ class CalendarController extends BaseController
         return 'true';
     }
 
+    public function postEdithour(){
+
+        \DB::table('reservedhours')->where('id',\Request::input('id'))->update(['start'=>\Request::input('start'),'end'=>\Request::input('end')]);
+        return 'true';
+    }
 
 }
