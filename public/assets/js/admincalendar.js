@@ -57,9 +57,14 @@ $(document).ready(function () {
                 axisFormat: 'H:mm',
                 eventLimit: true, // allow "more" link when too many events
                 eventBorderColor: '#fff',
-                drop: function(date) {
+                eventDrop: function(event, delta, revertFunc) {
+
+                    console.log(event.start.format());
+                    console.log(event.end.format());
+                    event.editable = false;
+                    $('.qtip').hide();
                 },
-                droppable: true,
+                droppable: false,
                 eventRender: function(event, element, view) {
                     element.qtip({
                         content: event.description,
@@ -68,24 +73,16 @@ $(document).ready(function () {
                             at: 'top center'
                         },
                         show: {
-                            event: 'mouseenter',
-
+                            event: 'click',
+                            solo: true
                         },
                         hide: {
-                            event: 'mouseleave'
+                            event: 'unfocus click'
                         },
                         style: {
                             classes: 'myQtip'
                         },
                         onHide: function() { $(this).qtip('destroy'); }
-                    });
-                    element.bind('dblclick', function() {
-                        //$('#admincalendar').fullCalendar('removeEvents',event._id);
-
-                    });
-                    element.bind('clickoutside', function() {
-                        //$('#admincalendar').fullCalendar('removeEvents',event._id);
-
                     });
                     element.bind('click', function() {
                         //event.startEditable = true;
@@ -96,10 +93,11 @@ $(document).ready(function () {
                         if(bool){
                             bool = false;
                             element.append('<div data-eventID="'+event._id+'" class="eventMenu"></div>');
-                            $('.eventMenu').html('<div class="trash event-menu-icon icon icon-pencil"></div><div id="trash"  class="event-menu-icon icon icon-trash"></div>');
+                            $('.eventMenu').html('<div id="edit-event" class="event-menu-icon icon icon-pencil"></div><div id="trash"  class="event-menu-icon icon icon-trash"></div>');
                             $('.eventMenu').css('background-color',event.backgroundColor);
                             $('.eventMenu').css('border-color','#fff');
-                            delEvent(event,element);
+                            delEvent(event);
+                            editEvent(event,element);
                         }
                     });
 
@@ -203,9 +201,9 @@ $(document).ready(function () {
         }
     })(jQuery);
 
-    function delEvent(event,element){
+    function delEvent(event){
         $("#trash").on("click", function () {
-            var customModal = $('<div class="modal fade bs-example-modal-sm in delEvent"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: block; padding-right: 17px;"> <div class="modal-dialog modal-sm"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close cancle-event" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> <h4 class="modal-title" id="mySmallModalLabel">Изтриване</h4> </div> <div class="modal-body">Потвърдете изтриването? </div> <div class="modal-footer"> <button type="button" class="btn btn-default cancle-event" data-dismiss="modal">Затвори</button> <button type="button" class="btn btn-danger delete-event">Изтрии</button> </div> </div> </div> </div>');
+            var customModal = $('<div class="modal fade bs-example-modal-sm in delEvent"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: block; padding-right: 17px;"> <div class="modal-dialog modal-sm"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close cancle-event" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> <h4 class="modal-title" id="mySmallModalLabel">Изтриване</h4> </div> <div class="modal-body">Потвърдете изтриването? </div> <div class="modal-footer"> <button type="button" class="btn btn-default cancle-event" data-dismiss="modal">Затвори</button> <button type="button" class="btn btn-danger delete-event" data-dismiss="modal">Изтрии</button> </div> </div> </div> </div>');
             $('body').append(customModal);
             $('.delEvent').modal({
                 backdrop    : 'static',
@@ -217,27 +215,32 @@ $(document).ready(function () {
             $('.delEvent').on('hide.bs.modal', function () {
                 $(this).remove();
             });
-            $('.qtip').remove();
+            $('.qtip').hide();
 
         });
 
         $('.delete-event').click(function(e){
 
-            $('.delEvent').click(function(e){
-                $.post('/calendar/delevent',{_token:Globals._token,hour_id:event.hour_id}).error(function(er){
-                    console.log(er);
-                }).success(function(e){
-                    $('.delEvent').modal('hide').remove();
-                    $('.modal-backdrop').remove();
-                    $('#admincalendar').fullCalendar('removeEvents',event._id);
-                    $('.qtip').remove();
-                    $.fn.taskpluginreload();
-                });
+            $('.delEvent').on('hide.bs.modal', function () {
+                $(this).remove();
             });
-
-
-
+            $('.qtip').hide();
+            $.post('/calendar/delevent',{_token:Globals._token,hour_id:event.hour_id}).error(function(er){
+                console.log(er);
+            }).success(function(e){
+                $('#admincalendar').fullCalendar('removeEvents',event._id);
+                $.fn.taskpluginreload();
+            });
         });
+    }
+
+    function editEvent(event,element){
+        $('#edit-event').click(function(e){
+            event.editable = true;
+            element.draggable();
+            alert('true');
+        });
+
     }
 
     $.fn.loadcalendar();
