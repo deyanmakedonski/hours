@@ -4,6 +4,7 @@
     <link href={{ URL::to("assets/plugins/datatables/css/jquery.datatables.min.css") }} rel="stylesheet" type="text/css"/>
     <link href={{ URL::to("assets/plugins/x-editable/bootstrap3-editable/css/bootstrap-editable.css") }} rel="stylesheet" type="text/css">
     <link href={{ URL::to("assets/plugins/bootstrap-multiselect/css/bootstrap-multiselect.css") }} rel="stylesheet" type="text/css"/>
+    <link href={{ URL::to('assets/plugins/bootstrap-colorpicker/css/colorpicker.css') }} rel="stylesheet" type="text/css"/>
     <style>
         .table-responsive {
             overflow-x:visible;
@@ -45,7 +46,9 @@
     <script src={{ URL::to("assets/plugins/bootstrap-multiselect/js/bootstrap-multiselect.js") }}></script>
     <script src={{ URL::to("assets/plugins/jquery-date-dropdowns/jquery.date-dropdowns.min.js") }}></script>
     <script src="{{ URL::to('assets/plugins/plupload-2.1.7/js/plupload.full.min.js') }}"></script>
+    <script src="{{ URL::to('assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
     <script src={{ URL::to("assets/js/userstable.js") }}></script>
     <script src={{ URL::to("assets/js/userregister.js") }}></script>
+
 
 @endsection

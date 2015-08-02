@@ -35,6 +35,13 @@
                     {!! Form::password('password_confirmation',['class' => 'form-postition form-control','placeholder' =>
                     'Потвърди парола']) !!}
                 </div>
+                <br>
+                <div class="group" >
+                    <div class="col-md-4 input-group get-event-color">
+                        {!! Form::text('event-color','#3a73cf',['class' => 'form-postition form-control','placeholder' => 'Изберете цвят','autocomplete'=>'off']) !!}
+                        <span class="input-group-addon"><i></i></span>
+                    </div>
+                </div>
 
                 <div class="group">
                     <i class="fa-position glyphicon glyphicon-euro"></i>

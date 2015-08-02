@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use Validator;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
-class AuthController extends Controller
+class AuthController extends \App\Http\Controllers\BaseController
 {
     /*
     |--------------------------------------------------------------------------
@@ -22,11 +22,12 @@ class AuthController extends Controller
     | a simple trait to add these behaviors. Why don't you explore it?
     |
     */
+
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+
     protected $loginPath =  '/account/login';
     protected $redirectAfterLogout = '/account/login';
     protected $redirectTo = '/home';
-
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
      * Create a new authentication controller instance.
@@ -35,7 +36,8 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('acl', ['except' => ['getLogout']]);
+        parent::__construct();
     }
 
     public function getLogin(){
@@ -139,6 +141,7 @@ class AuthController extends Controller
         $user = new \App\User;
         $user->name = $data['name'];
         $user->email = $data['email'];
+        $user->eventcolor = $data['event-color'];
         $user->salary = $data['salary'];
         $user->bDate = $data['date'];
         $user->password = bcrypt($data['password']);

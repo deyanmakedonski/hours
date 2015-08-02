@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    $('.get-event-color').colorpicker();
+
     $(".panel-tools .minimise-tool").click(function (event) {
         $(this).parents(".panel").find(".panel-body").slideToggle(100);
         return false;
