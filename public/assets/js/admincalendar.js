@@ -122,7 +122,12 @@ $(document).ready(function () {
                             event: 'unfocus click'
                         },
                         style: {
-                            classes: 'myQtip'
+                            classes: 'myQtip qtip-blue qtip-shadow qtip-rounded',
+
+                        },
+                        position: {
+                            my: 'bottom center',  // Position my top left...
+                            at: 'top center', // at the bottom right of...
                         },
                         onHide: function() { $(this).qtip('destroy'); }
                     });
