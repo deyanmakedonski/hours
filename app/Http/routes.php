@@ -22,7 +22,8 @@ Route::controllers([
     'avatar/{id}' => 'AvatarController',
     'accounts' => 'AccountController',
     'calendar' => 'CalendarController',
-    'tasks' => 'TaskController'
+    'tasks' => 'TaskController',
+    'settings' => 'SettingsController'
 ]);
 
 Route::post('/test',function(){

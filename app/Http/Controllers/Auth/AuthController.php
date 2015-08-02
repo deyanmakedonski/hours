@@ -164,7 +164,7 @@ class AuthController extends \App\Http\Controllers\BaseController
             $path = storage_path().'/profiles/'.$email.'/avatar/';
             \File::makeDirectory($path,  $mode = 0777, $recursive = true);
             $path = storage_path().'/profiles/'.$email.'/avatar/avatar.jpg';
-            \Image::make($file->getRealPath())->save($path,30);
+            \Image::make($file->getRealPath())->fit(900, 900)->save($path,30);
         });
     }
 

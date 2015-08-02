@@ -14,7 +14,6 @@
             @empty
                 <li>
                     <a href="#">
-                        <div class="task-icon badge badge-success"><i class="icon-user"></i></div>
                         <p class="task-details">Нямате запазени часове!</p>
                     </a>
                 </li>

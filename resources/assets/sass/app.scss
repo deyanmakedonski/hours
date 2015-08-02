@@ -232,3 +232,51 @@ input[name="salary"]{
   margin-bottom: 5px;
   margin-left: 2px;
 }
+.avatar-settings{
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+.avatar-settings img{
+  width: 100px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+.team-avatar{
+  border-radius: 50%;
+  height: 55px;
+  width: 55px;
+  display: inline-block;
+  overflow: hidden;
+  margin: 5px;
+}
+.team-avatar img {
+  width: 55px;
+}
+.change-avatar{
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  background: black;
+  z-index: 1;
+  top: 0px;
+  opacity: 0.6;
+  color:#fff;
+  position: absolute;
+  display: none;
+}
+.change-avatar p{
+  margin-top: 30px;
+  margin-left: 5px;
+  line-height: 10px;
+}
+.change-avatar i{
+  margin-left: 33px;
+  font-size: 25px;
+}

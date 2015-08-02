@@ -97,7 +97,7 @@
                                 <img class="img-circle avatar" src={{URL::to('/avatar/'.\Hashids::encode(Auth::user()->id,rand(0,100)))}} width="45" height="45" alt="">
                             </a>
                             <ul class="dropdown-menu dropdown-list" role="menu">
-                                <li role="presentation"><a href="javascript:void(0);"><i class="fa fa-user"></i>Профил</a></li>
+                                <li role="presentation"><a href={{ URL::to('settings/profile') }}><i class="fa fa-user"></i>Профил</a></li>
                                 <li role="presentation"><a href="javascript:void(0);"><i class="fa fa-calendar"></i>Календар</a></li>
                                 <li role="presentation" class="divider"></li>
                                 <li role="presentation"><a href={{ URL::to('/lock-screen') }}><i class="fa fa-lock"></i>Заключи екран</a></li>
@@ -119,9 +119,14 @@
                         <p>Начало</p>
                     </a>
                 </li>
+                <li class="settings">
+                    <a href={{ URL::to('/settings/profile') }}><span class="menu-icon icon-user"></span>
+                        <p>Профил</p>
+                    </a>
+                </li>
                 @if(Auth::user()->role->role_title == 'Admin')
                     <li class="accounts">
-                        <a href={{ URL::to('/accounts') }}><span class="menu-icon icon-user"></span>
+                        <a href={{ URL::to('/accounts') }}><span class="fa  fa-users"></span>
                             <p>Акаунти</p>
                         </a>
                     </li>

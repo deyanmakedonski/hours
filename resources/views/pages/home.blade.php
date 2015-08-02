@@ -2,7 +2,6 @@
 
 @section('styles')
     <link  href={{ URL::asset('assets/plugins/fullcalendar/fullcalendar.min.css') }} rel="stylesheet" type="text/css"/>
-    <link  href={{ URL::asset('assets/plugins/qtip/jquery.qtip.min.css') }} rel="stylesheet" type="text/css"/>
 @endsection
 
 @section('content')
@@ -38,7 +37,6 @@
     <script type="text/javascript" src={{ URL::asset('assets/plugins/fullcalendar/lib/moment.min.js') }}></script>
     <script type="text/javascript" src={{ URL::asset('assets/plugins/fullcalendar/fullcalendar.min.js') }}></script>
     <script type="text/javascript" src={{ URL::asset('assets/plugins/fullcalendar/lang-all.js  ') }}></script>
-    <script type="text/javascript" src={{ URL::asset('assets/plugins/qtip/jquery.qtip.min.js') }}></script>
     <script>
         var services = JSON.parse('{!!json_encode($services) !!}');
     </script>

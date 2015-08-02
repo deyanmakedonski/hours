@@ -10,6 +10,7 @@
 <link href={{URL::to("/assets/plugins/line-icons/simple-line-icons.css")}} rel="stylesheet" type="text/css"/>
 <link href={{URL::to("/assets/plugins/waves/waves.min.css")}} rel="stylesheet" type="text/css"/>
 <link href={{URL::to("/assets/plugins/switchery/switchery.min.css")}} rel="stylesheet" type="text/css"/>
+<link  href={{URL::asset('assets/plugins/qtip/jquery.qtip.min.css') }} rel="stylesheet" type="text/css"/>
 
 
 <!-- Theme Styles -->
