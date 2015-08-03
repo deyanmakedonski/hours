@@ -3,7 +3,6 @@
 @section('styles')
 
     <link href={{ URL::to('assets/plugins/bootstrap-colorpicker/css/colorpicker.css') }} rel="stylesheet" type="text/css"/>
-    <link href={{ URL::to('assets/plugins/toastr/toastr.min.css') }} rel="stylesheet"/>
 @endsection
 
 @section('content')
@@ -153,7 +152,6 @@
 @section('scripts')
 
     <script src="{{ URL::to('assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
-    <script src={{URL::to('assets/plugins/toastr/toastr.min.js')}}></script>
     <script src="{{ URL::to('assets/plugins/plupload-2.1.7/js/plupload.full.min.js') }}"></script>
     <script type="text/javascript" src={{ URL::asset('assets/js/usersettings.js') }}></script>
     <script>

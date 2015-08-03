@@ -56,4 +56,11 @@ class CalendarController extends BaseController
         return 'true';
     }
 
+    public function postEvtaphold(){
+        $reservedhour = \App\ReservedHours::find(\Request::input('hour_id'));
+        \App\FinishedHour::create(array('user_id'=>$reservedhour->user_id,'service_id'=>$reservedhour->service_id,'client'=>$reservedhour->client,'price'=>$reservedhour->service->price,'created_at'=>date('Y-m-d')));
+        \DB::table('reservedhours')->where('id','=',$reservedhour->id)->delete();
+        return 'true';
+    }
+
 }

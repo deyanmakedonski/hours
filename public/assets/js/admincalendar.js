@@ -93,6 +93,7 @@ $(document).ready(function () {
                         }).success(function(e){
                             //console.log(e);
                         });
+                        toastr["info"]("Часът е сменен!");
                         event.editable = false;
                         $('.qtip').hide();
                         $.fn.taskpluginreload();
@@ -146,6 +147,23 @@ $(document).ready(function () {
                             delEvent(event);
                             editEvent(event,element);
                         }
+                    });
+                    element.bind('taphold',function(e){
+
+                        if(!event.editable){
+                            $.post('/calendar/evtaphold',{_token:Globals._token,hour_id:event.hour_id}).error(function(er){
+                                console.log(er);
+                            }).success(function(e){
+                                //console.log(e);
+                                $.fn.taskpluginreload();
+                                $('#admincalendar').fullCalendar('removeEvents',event._id);
+                                toastr["info"]("Часът е завършен!");
+                            });
+                            $('.qtip').hide();
+                        }
+
+
+
                     });
 
                 },
@@ -276,6 +294,7 @@ $(document).ready(function () {
                 console.log(er);
             }).success(function(e){
                 $('#admincalendar').fullCalendar('removeEvents',event._id);
+                toastr["info"]("Часът е изтрит!");
                 $.fn.taskpluginreload();
             });
         });
@@ -285,6 +304,7 @@ $(document).ready(function () {
         $('#edit-event').click(function(e){
             event.editable = true;
             element.draggable();
+            toastr["info"]("Преместете часът!");
         });
 
     }

@@ -34,6 +34,7 @@
 @endsection
 
 @section('scripts')
+    <script type="text/javascript" src={{ URL::asset('/assets/js/taphold.js') }}></script>
     <script type="text/javascript" src={{ URL::asset('assets/plugins/fullcalendar/lib/moment.min.js') }}></script>
     <script type="text/javascript" src={{ URL::asset('assets/plugins/fullcalendar/fullcalendar.min.js') }}></script>
     <script type="text/javascript" src={{ URL::asset('assets/plugins/fullcalendar/lang-all.js  ') }}></script>
