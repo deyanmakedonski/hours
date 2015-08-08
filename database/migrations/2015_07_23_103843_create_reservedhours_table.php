@@ -17,6 +17,7 @@ class CreateReservedhoursTable extends Migration
             $table->integer('user_id');
             $table->integer('service_id');
             $table->text('client');
+            $table->string('mobile');
             $table->string('start');
             $table->string('end');
 

@@ -22,6 +22,11 @@
                     <label class="control-label">Клиент:</label>
                     <input name="client" type="text" value='' class="form-control" id="client">
                 </div>
+
+                <div class="form-group">
+                    <label class="control-label">GSM:</label>
+                    <input name="mobile" type="text" value='' class="form-control" id="mobile">
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-default" id="submit" >Избери</button>

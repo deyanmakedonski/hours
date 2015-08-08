@@ -10,7 +10,7 @@ class FinishedHour extends Model
 
     protected $table = 'finishedhours';
 
-    protected $fillable = ['user_id','service_id','client','price','created_at'];
+    protected $fillable = ['user_id','mobile','service_id','client','price','created_at'];
 
     public function user(){
         return $this->belongsTo('\App\User','user_id');

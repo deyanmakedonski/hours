@@ -12,7 +12,8 @@
         "kalnoy/nestedset": "^2.4",
         "jildertmiedema/laravel-plupload": "^0.3.0",
         "intervention/image": "^2.3",
-        "aginev/acl": "^1.1"
+        "aginev/acl": "^1.1",
+        "guzzlehttp/guzzle": "~6"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

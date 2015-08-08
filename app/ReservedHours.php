@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ReservedHours extends Model
 {
     protected $table = 'reservedhours';
-    protected $fillable = ['user_id','service_id','client','start','end'];
+    protected $fillable = ['user_id','service_id','client','start','end','mobile'];
 
     public function user(){
         return $this->belongsTo('\App\User','user_id');

@@ -32,7 +32,7 @@ class SettingsController extends Controller
                 chown($path,465);
                 unlink($path);
             }
-            \Image::make($file->getRealPath())->fit(900, 900)->save($path,30);
+            \Image::make($file->getRealPath())->fit(1000, 1000)->save($path,30);
         });
     }
 
@@ -43,4 +43,49 @@ class SettingsController extends Controller
         $user->save();
         return 'true';
     }
+
+    public function getChangePassword(){
+        return \Response::json(\View::make('partials.changepassword')->render(),200);
+    }
+
+    public function postChangePassword(){
+
+        $validator = $this->validator(\Request::all());
+        if ($validator->fails() ) {
+
+            return \Response::json(array(
+                'fail' => true,
+                'errors' => $validator->getMessageBag()->toArray()
+            ));
+        }
+
+        \Auth::user()->password = bcrypt(\Request::input('password'));
+        \Auth::user()->save();
+
+        return 'true';
+    }
+
+    public function validator(array $data)
+    {
+        \Validator::extend('passcheck', function() {
+            $value = \Request::input('old_password');
+            return \Hash::check($value, \Auth::user()->password);
+        });
+
+
+        return \Validator::make($data, [
+            'password' => 'required|confirmed|min:6',
+            'old_password' => 'required|passcheck'
+
+        ], [
+            'old_password.required' => 'Паролата е задължителна.',
+            'old_password.passcheck' => 'Грешна парола.',
+            'password.required' => 'Паролата е задължителна.',
+            'password.confirmed' => 'Потвърдената парола е грешна.',
+            'password.min' => 'Минимална дължина на паролата 6 символа.',
+
+
+        ]);
+    }
+
 }

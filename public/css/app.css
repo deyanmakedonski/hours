@@ -118,7 +118,7 @@
 .registration-form form .group .form-postition {
   padding: 0 0 0 35px !important; }
 
-.registration-form form .group .pop-warning {
+.pop-warning {
   font-size: 16px;
   color: #B94A48;
   display: none;

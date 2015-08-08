@@ -23,7 +23,8 @@ Route::controllers([
     'accounts' => 'AccountController',
     'calendar' => 'CalendarController',
     'tasks' => 'TaskController',
-    'settings' => 'SettingsController'
+    'settings' => 'SettingsController',
+    'password' => 'Auth\PasswordController'
 ]);
 
 Route::post('/test',function(){

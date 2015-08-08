@@ -17,6 +17,7 @@ class CreateFinishedhoursTable extends Migration
             $table->integer('user_id');
             $table->integer('service_id');
             $table->string('client');
+            $table->string('mobile');
             $table->decimal('price',6,2);
             $table->date('created_at');
         });

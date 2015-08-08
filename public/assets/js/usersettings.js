@@ -106,4 +106,43 @@ $(document).ready(function () {
         });
     });
 
+    $('.change-password').click(function(e){
+        $.get('/settings/change-password/').error(function(er){
+            console.log(er);
+        }).success(function(e){
+            $('.change-password-html').empty().html(e);
+        });
+    });
+
+    $('.change-password-html').on('submit','form[data-remote-change-password]',function(e){
+        $data = $(this).serialize();
+        $url = $(this).attr('action');
+        $.post($url,$data).error(function(er){
+            console.log(er);
+        }).success(function(data){
+            if (data.fail) {
+
+                $('[data-show-error]').hide().popover('hide');
+
+                $.each(data.errors, function (index, value) {
+
+                    var popover = $('[data-show-error=' + index + ']').show().popover();
+                    popover.attr('data-content', value);
+
+                });
+
+            } else {
+
+                $('[data-show-error]').hide().popover('destroy');
+                $('input[name="old_password"]').val('');
+                $('input[name="password"]').val('');
+                $('input[name="password_confirmation"]').val('');
+                toastr["info"]("Паролата Ви е успешно сменена!");
+                //console.log(data);
+
+            }
+        });
+        e.preventDefault();
+    });
+
 });

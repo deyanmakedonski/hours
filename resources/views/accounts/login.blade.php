@@ -39,7 +39,7 @@
                                     <label> Запомни ме</label>
                                 </div>
                                 <button type="submit" class="btn btn-success btn-block">Login</button>
-                                <a href="forgot.html" class="display-block text-center m-t-md text-sm">Забравена Парола?</a>
+                                <a href={{ URL::to('/password/email') }} class="display-block text-center m-t-md text-sm">Забравена Парола?</a>
                             {!! Form::close() !!}
                         </div>
                         @if (count($errors) > 0)

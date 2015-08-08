@@ -151,15 +151,41 @@ $(document).ready(function () {
                     element.bind('taphold',function(e){
 
                         if(!event.editable){
-                            $.post('/calendar/evtaphold',{_token:Globals._token,hour_id:event.hour_id}).error(function(er){
-                                console.log(er);
-                            }).success(function(e){
-                                //console.log(e);
-                                $.fn.taskpluginreload();
-                                $('#admincalendar').fullCalendar('removeEvents',event._id);
-                                toastr["info"]("Часът е завършен!");
+
+
+                            var customModal = $('<div class="modal fade bs-example-modal-sm in submitEvent"  tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: block; padding-right: 17px;"> <div class="modal-dialog modal-sm"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close cancle-event" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> <h4 class="modal-title" id="mySmallModalLabel">Потвърди</h4> </div> <div class="modal-body">Потвърждавате ли изпълнения час? </div> <div class="modal-footer"> <button type="button" class="btn btn-default cancle-event" data-dismiss="modal">Затвори</button> <button type="button" class="btn btn-info submit-event" data-dismiss="modal">Потвърди</button> </div> </div> </div> </div>');
+                            $('body').append(customModal);
+                            $('.submitEvent').modal({
+                                backdrop    : 'static',
+                                keyboard    : false,
+                            }).modal('show');
+
+
+                            $('.cancle-event').click(function(e){
+
+                                $('.submitEvent').on('hide.bs.modal', function () {
+                                    $(this).remove();
+                                });
+                                $('.qtip').hide();
+
                             });
-                            $('.qtip').hide();
+
+                            $('.submit-event').click(function(e){
+
+                                $('.submitEvent').on('hide.bs.modal', function () {
+                                    $(this).remove();
+                                });
+                                $.post('/calendar/evtaphold',{_token:Globals._token,hour_id:event.hour_id}).error(function(er){
+                                    console.log(er);
+                                }).success(function(e){
+                                    //console.log(e);
+                                    $.fn.taskpluginreload();
+                                    $('#admincalendar').fullCalendar('removeEvents',event._id);
+                                    toastr["info"]("Часът е завършен!");
+                                });
+                                $('.qtip').hide();
+                            });
+
                         }
 
 
@@ -194,6 +220,7 @@ $(document).ready(function () {
                 $('#hourElements').modal('hide');
                 data.user_id = $('.selected-user :selected').val();
                 data.client_name =  $('input[name="client"]').val();
+                data.client_mobile = $('input[name="mobile"]').val();
                 if(data.service_id != null){
 
                     data.end = getEnd();
@@ -227,7 +254,7 @@ $(document).ready(function () {
                     {
                         hour_id:data.hour_id,
                         title: data.name.substr(1,data.name.indexOf(')')-1),
-                        description:$('.selected-user :selected').text()+'</br>'+data.name+'<br>'+data.client_name,
+                        description:$('.selected-user :selected').text()+'</br>'+data.name+'<br>'+data.client_name+'-'+data.client_mobile,
                         backgroundColor: data.backgroundColor,
                         start: data.start,
                         end: data.end
@@ -241,6 +268,7 @@ $(document).ready(function () {
                 $('.service-fill').val('');
                 $('.selected-user').html('<option>Изберете услуга!</option>');
                 $('input[name="client"]').val('');
+                $('input[name="mobile"]').val('');
             };
         }
     })(jQuery);
