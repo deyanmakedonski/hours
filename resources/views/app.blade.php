@@ -43,49 +43,49 @@
                         <li>
                             <a href="javascript:void(0);" class="waves-effect waves-button waves-classic"><i class="fa fa-diamond"></i></a>
                         </li>
-                        <li>
-                            <a href="javascript:void(0);" class="waves-effect waves-button waves-classic"><i class="fa fa-expand"></i></a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">
-                                <i class="fa fa-cogs"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-md dropdown-list theme-settings" role="menu">
-                                <li class="li-group">
-                                    <ul class="list-unstyled">
-                                        <li class="no-link" role="presentation">
-                                            Fixed Header
-                                            <div class="ios-switch pull-right switch-md">
-                                                <input type="checkbox" class="js-switch pull-right fixed-header-check" checked>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="li-group">
-                                    <ul class="list-unstyled">
-                                        <li class="no-link" role="presentation">
-                                            Fixed Sidebar
-                                            <div class="ios-switch pull-right switch-md">
-                                                <input type="checkbox" class="js-switch pull-right fixed-sidebar-check">
-                                            </div>
-                                        </li>
-                                        <li class="no-link" role="presentation">
-                                            Toggle Sidebar
-                                            <div class="ios-switch pull-right switch-md">
-                                                <input type="checkbox" class="js-switch pull-right toggle-sidebar-check">
-                                            </div>
-                                        </li>
-                                        <li class="no-link" role="presentation">
-                                            Compact Menu
-                                            <div class="ios-switch pull-right switch-md">
-                                                <input type="checkbox" class="js-switch pull-right compact-menu-check" checked>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="no-link"><button class="btn btn-default reset-options">Reset Options</button></li>
-                            </ul>
-                        </li>
+                        {{--<li>--}}
+                            {{--<a href="javascript:void(0);" class="waves-effect waves-button waves-classic"><i class="fa fa-expand"></i></a>--}}
+                        {{--</li>--}}
+                        {{--<li class="dropdown">--}}
+                            {{--<a href="#" class="dropdown-toggle waves-effect waves-button waves-classic" data-toggle="dropdown">--}}
+                                {{--<i class="fa fa-cogs"></i>--}}
+                            {{--</a>--}}
+                            {{--<ul class="dropdown-menu dropdown-md dropdown-list theme-settings" role="menu">--}}
+                                {{--<li class="li-group">--}}
+                                    {{--<ul class="list-unstyled">--}}
+                                        {{--<li class="no-link" role="presentation">--}}
+                                            {{--Fixed Header--}}
+                                            {{--<div class="ios-switch pull-right switch-md">--}}
+                                                {{--<input type="checkbox" class="js-switch pull-right fixed-header-check" checked>--}}
+                                            {{--</div>--}}
+                                        {{--</li>--}}
+                                    {{--</ul>--}}
+                                {{--</li>--}}
+                                {{--<li class="li-group">--}}
+                                    {{--<ul class="list-unstyled">--}}
+                                        {{--<li class="no-link" role="presentation">--}}
+                                            {{--Fixed Sidebar--}}
+                                            {{--<div class="ios-switch pull-right switch-md">--}}
+                                                {{--<input type="checkbox" class="js-switch pull-right fixed-sidebar-check">--}}
+                                            {{--</div>--}}
+                                        {{--</li>--}}
+                                        {{--<li class="no-link" role="presentation">--}}
+                                            {{--Toggle Sidebar--}}
+                                            {{--<div class="ios-switch pull-right switch-md">--}}
+                                                {{--<input type="checkbox" class="js-switch pull-right toggle-sidebar-check">--}}
+                                            {{--</div>--}}
+                                        {{--</li>--}}
+                                        {{--<li class="no-link" role="presentation">--}}
+                                            {{--Compact Menu--}}
+                                            {{--<div class="ios-switch pull-right switch-md">--}}
+                                                {{--<input type="checkbox" class="js-switch pull-right compact-menu-check" checked>--}}
+                                            {{--</div>--}}
+                                        {{--</li>--}}
+                                    {{--</ul>--}}
+                                {{--</li>--}}
+                                {{--<li class="no-link"><button class="btn btn-default reset-options">Reset Options</button></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
 
@@ -98,7 +98,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-list" role="menu">
                                 <li role="presentation"><a href={{ URL::to('settings/profile') }}><i class="fa fa-user"></i>Профил</a></li>
-                                <li role="presentation"><a href="javascript:void(0);"><i class="fa fa-calendar"></i>Календар</a></li>
+                                <li role="presentation"><a href={{ URL::to('/') }}><i class="fa fa-calendar"></i>Календар</a></li>
                                 <li role="presentation" class="divider"></li>
                                 <li role="presentation"><a href={{ URL::to('/lock-screen') }}><i class="fa fa-lock"></i>Заключи екран</a></li>
                                 <li role="presentation"><a href={{ URL::to('/account/logout') }}><i class="fa fa-sign-out m-r-xs"></i>Излез</a></li>
@@ -150,9 +150,9 @@
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="inbox.html">Запазени часове</a></li>
-                        <li><a href="message-view.html">Други</a></li>
-                        <li><a href="compose.html">Compose</a></li>
+                        <li><a href={{ URL::to('/') }}>Запазени часове</a></li>
+                        <li><a href={{ URL::to('/') }}>Други</a></li>
+                        <li><a href={{ URL::to('/') }}>Часове</a></li>
                     </ul>
                 </li>
             </ul>

@@ -16,8 +16,34 @@ $(document).ready(function () {
                 dayClick:function(date, jsEvent, view){
 
                     if (view.name=='month') {
-                        $('#nop-calendar').fullCalendar('changeView', 'agendaDay');
-                        $('#nop-calendar').fullCalendar('gotoDate',date);
+
+                        var d = new Date();
+                        d.setDate(d.getDate() - 1);
+
+                        var myDate = moment(d);
+                        myDate = myDate.format();
+                        date = date.format();
+                        if(myDate > date){
+                            var customModal = $('<div class="modal fade bs-example-modal-sm in" id="pastHour" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: block; padding-right: 17px;"> <div class="modal-dialog modal-sm"> <div class="modal-content"> <div class="modal-header"> <button type="button" class="close cancle-event" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button> <h4 class="modal-title" id="mySmallModalLabel">Грешка</h4> </div> <div class="modal-body">Не може да запазите отминал час ! </div> <div class="modal-footer"> <button type="button" class="btn btn-default cancle-event" data-dismiss="modal">Затвори</button></div> </div> </div> </div>');
+                            $('body').append(customModal);
+                            $('#pastHour').modal({
+                                backdrop    : 'static',
+                                keyboard    : false,
+                            });
+                            $('#pastHour').modal('show');
+                            $('.cancle-event').click(function(e){
+
+                                $('#pastHour').on('hide.bs.modal', function () {
+                                    $(this).remove();
+                                });
+
+                            });
+                        }else{
+                            $('#nop-calendar').fullCalendar('changeView', 'agendaDay');
+                            $('#nop-calendar').fullCalendar('gotoDate',date);
+                        }
+
+
                     }else{
                         var myDate = moment(new Date());
                         myDate = myDate.format();
@@ -343,6 +369,13 @@ $(document).ready(function () {
     }
 
     $.fn.loadcalendar();
+
+    setInterval(function(){
+
+        $.fn.loadcalendar();
+        $.fn.taskpluginreload()
+
+    }, 600000);
 
 });
 

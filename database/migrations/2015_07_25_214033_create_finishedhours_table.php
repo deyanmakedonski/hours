@@ -19,7 +19,7 @@ class CreateFinishedhoursTable extends Migration
             $table->string('client');
             $table->string('mobile');
             $table->decimal('price',6,2);
-            $table->date('created_at');
+            $table->timestamps();
         });
     }
 
