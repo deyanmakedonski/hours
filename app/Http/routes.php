@@ -12,6 +12,8 @@
 */
 
 Route::get('/home', 'HomeController@getHome');
+Route::get('/test','HomeController@getTest');
+
 Route::get('/',function(){
     return redirect('/home');
 });

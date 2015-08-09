@@ -22,9 +22,18 @@
             <div class="col-md-13">
                 <div class="panel panel-white">
                     <div class="panel-body">
-                        <div class="admin-cal-ajax">
+                        @if(Auth::user()->role->role_title == 'Admin' || Auth::user()->role->role_title == 'Moderator')
+                            <div class="admin-cal-ajax">
 
-                        </div>
+                            </div>
+                         @else
+
+                            <div class="nop-cal-ajax">
+
+                            </div>
+
+                        @endif
+
                     </div>
                 </div>
             </div>
@@ -34,16 +43,30 @@
 @endsection
 
 @section('scripts')
-    <script type="text/javascript" src={{ URL::asset('/assets/js/taphold.js') }}></script>
+
+
+
+
     <script type="text/javascript" src={{ URL::asset('assets/plugins/fullcalendar/lib/moment.min.js') }}></script>
     <script type="text/javascript" src={{ URL::asset('assets/plugins/fullcalendar/fullcalendar.min.js') }}></script>
     <script type="text/javascript" src={{ URL::asset('assets/plugins/fullcalendar/lang-all.js  ') }}></script>
-    <script>
-        var services = JSON.parse('{!!json_encode($services) !!}');
-    </script>
-    <script type="text/javascript" src={{ URL::asset('assets/js/selectplugin.js') }}></script>
-    <script type="text/javascript" src={{ URL::asset('assets/js/admincalendar.js') }}></script>
 
+    <script type="text/javascript" src={{ URL::asset('/assets/js/taphold.js') }}></script>
+
+    @if(Auth::user()->role->role_title == 'Admin' || Auth::user()->role->role_title == 'Moderator')
+        <script>
+            var services = JSON.parse('{!!json_encode($services) !!}');
+        </script>
+        <script type="text/javascript" src={{ URL::asset('assets/js/admincalendar.js') }}></script>
+        <script type="text/javascript" src={{ URL::asset('assets/js/selectplugin.js') }}></script>
+    @else
+        <script>
+            var services = JSON.parse('{!!json_encode($servicesnp) !!}');
+        </script>
+        <script type="text/javascript" src={{ URL::asset('assets/js/nopcalendar.js') }}></script>
+        <script type="text/javascript" src={{ URL::asset('assets/js/selectpluginnp.js') }}></script>
+
+    @endif
 
 
 @endsection

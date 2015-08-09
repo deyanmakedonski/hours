@@ -16,9 +16,4 @@ class Service extends Model
         return $this->belongsTo('App\Category','category_id');
     }
 
-    public function users()
-    {
-        $users = $this->belongsToMany('App\User','user_services','service_id','user_id');
-        return $users;
-    }
 }

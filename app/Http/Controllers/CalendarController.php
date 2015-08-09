@@ -14,6 +14,11 @@ class CalendarController extends BaseController
         return \Response::json($users,200);
     }
 
+    public function getUsersnp(){
+        $users = \DB::select("SELECT users.id,users.name,users.eventcolor as color FROM `users`,`user_category` WHERE user_category.category_id = '".\Request::input('category_id')."' AND users.id='".\Auth::user()->id."'AND user_category.user_id='".\Auth::user()->id."'");
+        return \Response::json($users,200);
+    }
+
     public function postReservedhours(){
 
         $hours = array();
@@ -35,6 +40,29 @@ class CalendarController extends BaseController
 
     public function postHtml(){
         return \Response::json(\View::make('partials.admincalendar')->render(),200);
+    }
+
+    public function postNopreservedhours(){
+
+        $hours = array();
+        $reservedHours = \DB::select('SELECT reservedhours.id as hour_id, users.name AS user_name,services.name as service_name,categories.name as category_name,reservedhours.client,reservedhours.start,reservedhours.end,users.eventcolor as color,reservedhours.mobile FROM `categories`, `reservedhours`,`services`,`users` WHERE reservedhours.user_id = users.id AND reservedhours.service_id = services.id AND categories.id = services.category_id and reservedhours.user_id = '.\Auth::user()->id);
+        foreach($reservedHours as $reservedHour){
+            $obj = (object)array_fill_keys(array('hour_id','backgroundColor','title','description','start','end'),'');
+            $obj->hour_id = $reservedHour->hour_id;
+            $obj->backgroundColor = $reservedHour->color;
+            $obj->title = $reservedHour->category_name;
+            $obj->description = $reservedHour->user_name.'<br>'.'('.$reservedHour->category_name.')-'.$reservedHour->service_name.'<br>'.$reservedHour->client.'-'.$reservedHour->mobile;
+            $obj->start = $reservedHour->start;
+            $obj->end = $reservedHour->end;
+            array_push($hours, $obj);
+        }
+
+        $reservedHours = $hours;
+        return $reservedHours;
+    }
+
+    public function postNophtml(){
+        return \Response::json(\View::make('partials.nopermitionusercalendar')->render(),200);
     }
 
     public function postHourreservation(){

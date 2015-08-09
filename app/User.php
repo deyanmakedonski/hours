@@ -45,9 +45,4 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $categories;
     }
 
-    public function services()
-    {
-        $services = $this->belongsToMany('App\Service','user_services','user_id','service_id');
-        return $services;
-    }
 }
