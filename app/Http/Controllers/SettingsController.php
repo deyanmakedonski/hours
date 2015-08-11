@@ -9,6 +9,10 @@ use App\Http\Controllers\Controller;
 
 class SettingsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function getProfile(){
         $users= \App\User::select('id','name')->where('id','!=',\Auth::user()->id)->get();
         $resHours = count(\App\ReservedHours::where('user_id',\Auth::user()->id)->get());

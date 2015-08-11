@@ -20,7 +20,8 @@ elixir(function(mix) {
     ],null,'public/css');
 
     mix.scripts([
-        'js/custom.js'
+        "js/custom.js",
     ],null,'public');
+
 
 });

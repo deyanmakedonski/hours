@@ -177,8 +177,6 @@
 
 @include('partials.js')
 
-<script src={{ URL::to('assets/js/checkplugin.js') }}></script>
-<script src={{ URL::to('assets/js/tasks.js') }}></script>
 
 <script type="text/javascript">
     Globals = {
@@ -201,6 +199,11 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     };
+    setInterval(function(){
+
+        $.fn.taskpluginreload()
+
+    }, 600000);
 </script>
 
 

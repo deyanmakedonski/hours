@@ -20,7 +20,7 @@
                 </div>
                 <div class="profile-info-value">
                     @if($finHours == 1)
-                        <h3>{{ $finHours }}$finHours</h3>
+                        <h3>{{ $finHours }}</h3>
                         <p>Изпълнен час</p>
                     @else
                         <h3>{{$finHours}}</h3>
@@ -49,7 +49,7 @@
                             <span class="input-group-addon"><i></i></span>
                         </div>
                     </li>
-                    <li><p><i class="icon icon-key m-r-xs"></i><a class="change-password" href="javascript:void(0);">Смяна на парола</a></p></li>
+                    <li><p><i class="icon icon-key m-r-xs"></i><a style="margin-right:70px;" class="change-password" href="javascript:void(0);">Смяна на парола</a></p></li>
                     <hr>
                     <li><p><i class="fa fa-map-marker m-r-xs"></i>София, ул.Ал Стамболийски №33</p></li>
                     <li><p><i class="fa fa-envelope m-r-xs"></i>{{ Auth::user()->email }}</p></li>
@@ -186,29 +186,29 @@
                     <div class="panel-body">
                         <p>Това е тестова версия. Сайтът е предназначен за служителите на СТУДИО ШИК. Предназначенa е за запазвване на часове.</p>
                     </div>
-                {{--</div>--}}
-                {{--<div class="panel panel-white">--}}
-                    {{--<div class="panel-heading">--}}
-                        {{--<div class="panel-title">Умения</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="panel-body">--}}
-                        {{--<p>HTML5</p>--}}
-                        {{--<div class="progress progress-xs">--}}
-                            {{--<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<p>PHP</p>--}}
-                        {{--<div class="progress progress-xs">--}}
-                            {{--<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<p>Javascript</p>--}}
-                        {{--<div class="progress progress-xs">--}}
-                            {{--<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                </div>
+                <div class="panel panel-white">
+                    <div class="panel-heading">
+                        <div class="panel-title">Умения</div>
+                    </div>
+                    <div class="panel-body">
+                        <p>TEST</p>
+                        <div class="progress progress-xs">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                            </div>
+                        </div>
+                        <p>TEST</p>
+                        <div class="progress progress-xs">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                            </div>
+                        </div>
+                        <p>TEST</p>
+                        <div class="progress progress-xs">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

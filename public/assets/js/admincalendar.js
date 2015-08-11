@@ -369,7 +369,6 @@ $(document).ready(function () {
     setInterval(function(){
 
         $.fn.loadcalendar();
-        $.fn.taskpluginreload()
 
     }, 600000);
 

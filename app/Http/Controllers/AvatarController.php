@@ -26,7 +26,7 @@ class AvatarController extends Controller
             return abort(404);
         }
 
-        $path = storage_path().'\profiles\\'.$email.'\avatar\avatar.jpg';
+        $path = storage_path().'/profiles/'.$email.'/avatar/avatar.jpg';
         $img = new Filesystem;
 
         try

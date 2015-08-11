@@ -12,7 +12,6 @@
 */
 
 Route::get('/home', 'HomeController@getHome');
-Route::get('/test','HomeController@getTest');
 
 Route::get('/',function(){
     return redirect('/home');
@@ -28,12 +27,3 @@ Route::controllers([
     'settings' => 'SettingsController',
     'password' => 'Auth\PasswordController'
 ]);
-
-Route::post('/test',function(){
-    try{
-        $user = \App\User::findOrFail(\Request::input('id'));
-        return \Response::json($user,200);
-    }catch(\Exception $e){
-        return \Response::json($e->getMessage(),200);
-    }
-});
