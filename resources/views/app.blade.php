@@ -177,6 +177,8 @@
 
 @include('partials.js')
 
+<script src={{ URL::to('assets/js/checkplugin.js') }}></script>
+<script src={{ URL::to('assets/js/tasks.js') }}></script>
 
 <script type="text/javascript">
     Globals = {

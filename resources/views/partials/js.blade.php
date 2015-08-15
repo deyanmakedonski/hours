@@ -24,5 +24,3 @@
 <script src={{URL::to("/js/all.js")}}></script>
 <script src="{{ asset('/vendor/acl/js/script.js') }}"></script>
 <script src="{{ asset('/vendor/acl/js/restful.js') }}"></script>
-<script src={{ URL::to('assets/js/checkplugin.js') }}></script>
-<script src={{ URL::to('assets/js/tasks.js') }}></script>

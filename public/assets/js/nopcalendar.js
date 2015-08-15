@@ -120,12 +120,11 @@ $(document).ready(function () {
                         $.post('/calendar/edithour',{_token:Globals._token,id:event.hour_id,start:event.start.format(),end:event.end.format()}).error(function(er){
                             console.log(er);
                         }).success(function(e){
-                            //console.log(e);
+                            $.fn.taskpluginreload();
                         });
                         toastr["info"]("Часът е сменен!");
                         event.editable = false;
                         $('.qtip').hide();
-                        $.fn.taskpluginreload();
                     }
 
                     //console.log(event.start.format());
