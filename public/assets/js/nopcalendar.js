@@ -46,6 +46,7 @@ $(document).ready(function () {
 
                     }else{
                         var myDate = moment(new Date());
+                        myDate =myDate.subtract(1, 'days');
                         myDate = myDate.format();
                         date = date.format();
 
